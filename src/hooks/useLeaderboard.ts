@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 
 interface LeaderboardEntry {
-  username: string;
+  name: string;
   wager: string;
   prize: string;
+  avatar: string;
 }
 
 const fetchLeaderboard = async (): Promise<LeaderboardEntry[]> => {

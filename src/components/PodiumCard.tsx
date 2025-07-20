@@ -4,13 +4,14 @@ import { cn } from "@/lib/utils";
 
 interface PodiumCardProps {
   rank: number;
-  username: string;
+  name: string;
   wager: string;
   prize: string;
+  avatar: string;
   isWinner?: boolean;
 }
 
-export const PodiumCard = ({ rank, username, wager, prize, isWinner }: PodiumCardProps) => {
+export const PodiumCard = ({ rank, name, wager, prize, avatar, isWinner }: PodiumCardProps) => {
   const getRankStyle = () => {
     switch (rank) {
       case 1:
@@ -50,7 +51,7 @@ export const PodiumCard = ({ rank, username, wager, prize, isWinner }: PodiumCar
         </div>
         
         <div className="space-y-2">
-          <h3 className="font-semibold text-lg truncate">{username}</h3>
+          <h3 className="font-semibold text-lg truncate">{name}</h3>
           <div className="text-sm text-muted-foreground">
             Wagered
           </div>

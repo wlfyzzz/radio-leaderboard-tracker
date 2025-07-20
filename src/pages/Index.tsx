@@ -73,9 +73,10 @@ const Index = () => {
               <div className="md:order-1">
                 <PodiumCard
                   rank={2}
-                  username={topThree[1].username}
+                  name={topThree[1].name}
                   wager={topThree[1].wager}
                   prize={topThree[1].prize}
+                  avatar={topThree[1].avatar}
                 />
               </div>
             )}
@@ -85,9 +86,10 @@ const Index = () => {
               <div className="md:order-2">
                 <PodiumCard
                   rank={1}
-                  username={topThree[0].username}
+                  name={topThree[0].name}
                   wager={topThree[0].wager}
                   prize={topThree[0].prize}
+                  avatar={topThree[0].avatar}
                   isWinner
                 />
               </div>
@@ -98,9 +100,10 @@ const Index = () => {
               <div className="md:order-3">
                 <PodiumCard
                   rank={3}
-                  username={topThree[2].username}
+                  name={topThree[2].name}
                   wager={topThree[2].wager}
                   prize={topThree[2].prize}
+                  avatar={topThree[2].avatar}
                 />
               </div>
             )}

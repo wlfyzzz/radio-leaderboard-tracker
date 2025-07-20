@@ -9,9 +9,10 @@ import {
 import { Badge } from "@/components/ui/badge";
 
 interface LeaderboardEntry {
-  username: string;
+  name: string;
   wager: string;
   prize: string;
+  avatar: string;
 }
 
 interface LeaderboardTableProps {
@@ -36,7 +37,7 @@ export const LeaderboardTable = ({ data, startFromRank = 4 }: LeaderboardTablePr
             const rank = startFromRank + index;
             return (
               <TableRow 
-                key={`${entry.username}-${rank}`} 
+                key={`${entry.name}-${rank}`} 
                 className="border-gaming-border/20 hover:bg-gaming-card/50 transition-colors"
               >
                 <TableCell className="font-bold text-gaming-orange">
@@ -45,9 +46,9 @@ export const LeaderboardTable = ({ data, startFromRank = 4 }: LeaderboardTablePr
                 <TableCell className="font-medium">
                   <div className="flex items-center space-x-3">
                     <div className="w-8 h-8 rounded-full bg-gaming-orange/20 flex items-center justify-center text-gaming-orange font-bold text-sm">
-                      {entry.username.charAt(0).toUpperCase()}
+                      {entry.name.charAt(0).toUpperCase()}
                     </div>
-                    <span className="truncate max-w-[200px]">{entry.username}</span>
+                    <span className="truncate max-w-[200px]">{entry.name}</span>
                   </div>
                 </TableCell>
                 <TableCell>
