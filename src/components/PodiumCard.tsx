@@ -15,9 +15,9 @@ export const PodiumCard = ({ rank, name, wager, prize, avatar, isWinner }: Podiu
   const getRankStyle = () => {
     switch (rank) {
       case 1:
-        return "bg-gradient-primary shadow-glow scale-110 z-10";
+        return "bg-gradient-card border-gaming-border/50 scale-105";
       case 2:
-        return "bg-gradient-card border-gaming-border/50";
+        return "bg-gradient-card border-gaming-border/40";
       case 3:
         return "bg-gradient-card border-gaming-border/30";
       default:
@@ -41,7 +41,7 @@ export const PodiumCard = ({ rank, name, wager, prize, avatar, isWinner }: Podiu
   return (
     <Card
       className={cn(
-        "relative p-6 border-2 transition-all duration-300 hover:scale-105",
+        "relative p-6 border-2 transition-all duration-300 hover:scale-102",
         getRankStyle()
       )}
     >

@@ -43,6 +43,12 @@ const Index = () => {
             Track the top performers in our radio competition
           </p>
           
+          <div className="mb-4 p-4 bg-card border border-border rounded-lg">
+            <p className="text-center text-foreground">
+              Use code <span className="font-bold text-gaming-orange bg-gaming-orange/10 px-2 py-1 rounded">radiobtw</span> to participate
+            </p>
+          </div>
+          
           <Badge 
             variant="secondary" 
             className="bg-gaming-orange/20 text-gaming-orange border-gaming-orange/30 px-4 py-2"
