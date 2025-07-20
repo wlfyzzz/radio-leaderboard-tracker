@@ -67,7 +67,8 @@ export const PodiumCard = ({ rank, name, wager, prize, avatar, isWinner }: Podiu
           variant="secondary" 
           className="bg-gaming-orange text-gaming-dark font-bold text-lg px-4 py-2"
         >
-          🏆 {prize}
+          <img src="https://toastyy.gg/assets/rain.svg" alt="Rain" className="w-5 h-5 mr-2" />
+          {prize}
         </Badge>
       </div>
     </Card>

@@ -8,7 +8,7 @@ interface LeaderboardEntry {
 }
 
 const fetchLeaderboard = async (): Promise<LeaderboardEntry[]> => {
-  const response = await fetch("https://api.wlfyzz.net/leaderboard/radio");
+  const response = await fetch("https://api.wlfyzz.net/radio/leaderboard");
   
   if (!response.ok) {
     throw new Error("Failed to fetch leaderboard data");

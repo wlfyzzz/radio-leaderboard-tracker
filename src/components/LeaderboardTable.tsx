@@ -56,7 +56,8 @@ export const LeaderboardTable = ({ data, startFromRank = 4 }: LeaderboardTablePr
                     variant="secondary" 
                     className="bg-gaming-orange/20 text-gaming-orange border-gaming-orange/30"
                   >
-                    🏆 {entry.prize}
+                    <img src="https://toastyy.gg/assets/rain.svg" alt="Rain" className="w-4 h-4 mr-1" />
+                    {entry.prize}
                   </Badge>
                 </TableCell>
                 <TableCell className="text-right font-mono font-semibold">
