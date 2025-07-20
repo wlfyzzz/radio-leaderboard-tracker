@@ -53,7 +53,7 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				gaming: {
-					gold: 'hsl(var(--gaming-gold))',
+					red: 'hsl(var(--gaming-red))',
 					orange: 'hsl(var(--gaming-orange))',
 					dark: 'hsl(var(--gaming-dark))',
 					card: 'hsl(var(--gaming-card))',

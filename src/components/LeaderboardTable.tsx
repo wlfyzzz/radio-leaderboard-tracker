@@ -45,7 +45,17 @@ export const LeaderboardTable = ({ data, startFromRank = 4 }: LeaderboardTablePr
                 </TableCell>
                 <TableCell className="font-medium">
                   <div className="flex items-center space-x-3">
-                    <div className="w-8 h-8 rounded-full bg-gaming-orange/20 flex items-center justify-center text-gaming-orange font-bold text-sm">
+                    <img 
+                      src={entry.avatar} 
+                      alt={`${entry.name}'s avatar`}
+                      className="w-8 h-8 rounded-full border border-gaming-border object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        target.nextElementSibling?.classList.remove('hidden');
+                      }}
+                    />
+                    <div className="w-8 h-8 rounded-full bg-gaming-orange/20 flex items-center justify-center text-gaming-orange font-bold text-sm hidden">
                       {entry.name.charAt(0).toUpperCase()}
                     </div>
                     <span className="truncate max-w-[200px]">{entry.name}</span>
