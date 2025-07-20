@@ -46,25 +46,50 @@ export const PodiumCard = ({ rank, name, wager, prize, avatar, isWinner }: Podiu
       )}
     >
       <div className="text-center space-y-4">
-        <div className="flex justify-center mb-4">
-          <img 
-            src={avatar} 
-            alt={`${name}'s avatar`}
-            className="w-16 h-16 rounded-full border-2 border-gaming-border object-cover"
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.style.display = 'none';
-              target.nextElementSibling?.classList.remove('hidden');
-            }}
-          />
-          <div className="w-16 h-16 rounded-full bg-gaming-orange/20 border-2 border-gaming-border flex items-center justify-center text-gaming-orange font-bold text-2xl hidden">
-            {name.charAt(0).toUpperCase()}
-          </div>
-        </div>
-        
-        <div className="text-3xl font-bold text-gaming-orange mb-2">
-          {getRankBadge()}
-        </div>
+        {rank === 1 ? (
+          <>
+            <div className="text-3xl font-bold text-gaming-orange mb-2">
+              {getRankBadge()}
+            </div>
+            <div className="flex justify-center mb-4">
+              <img 
+                src={avatar} 
+                alt={`${name}'s avatar`}
+                className="w-16 h-16 rounded-full border-2 border-gaming-border object-cover"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  target.nextElementSibling?.classList.remove('hidden');
+                }}
+              />
+              <div className="w-16 h-16 rounded-full bg-gaming-orange/20 border-2 border-gaming-border flex items-center justify-center text-gaming-orange font-bold text-2xl hidden">
+                {name.charAt(0).toUpperCase()}
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="flex justify-center mb-4">
+              <img 
+                src={avatar} 
+                alt={`${name}'s avatar`}
+                className="w-16 h-16 rounded-full border-2 border-gaming-border object-cover"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  target.nextElementSibling?.classList.remove('hidden');
+                }}
+              />
+              <div className="w-16 h-16 rounded-full bg-gaming-orange/20 border-2 border-gaming-border flex items-center justify-center text-gaming-orange font-bold text-2xl hidden">
+                {name.charAt(0).toUpperCase()}
+              </div>
+            </div>
+            
+            <div className="text-3xl font-bold text-gaming-orange mb-2">
+              {getRankBadge()}
+            </div>
+          </>
+        )}
         
         <div className="space-y-2">
           <h3 className="font-semibold text-lg truncate">{name}</h3>

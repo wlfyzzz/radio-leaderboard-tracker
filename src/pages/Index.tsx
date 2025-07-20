@@ -34,18 +34,18 @@ const Index = () => {
           <div className="flex justify-center items-center gap-3 mb-6">
             <Radio className="h-8 w-8 text-gaming-orange" />
             <h1 className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              Radio Leaderboard
+              Rain.gg Leaderboard
             </h1>
             <Zap className="h-8 w-8 text-gaming-orange" />
           </div>
           
           <p className="text-lg text-muted-foreground mb-4">
-            Track the top performers in our radio competition
+            Track the top performers in our rain competition
           </p>
           
           <div className="mb-4 p-4 bg-card border border-border rounded-lg">
             <p className="text-center text-foreground">
-              Use code <span className="font-bold text-gaming-orange bg-gaming-orange/10 px-2 py-1 rounded">radiobtw</span> to participate
+              Use code <a href="https://rain.gg/r/radiobtw" target="_blank" rel="noopener noreferrer" className="font-bold text-gaming-orange bg-gaming-orange/10 px-2 py-1 rounded hover:bg-gaming-orange/20 transition-colors">radiobtw</a> to participate
             </p>
           </div>
           
