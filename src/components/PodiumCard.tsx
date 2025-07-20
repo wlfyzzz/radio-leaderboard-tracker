@@ -15,11 +15,11 @@ export const PodiumCard = ({ rank, name, wager, prize, avatar, isWinner }: Podiu
   const getRankStyle = () => {
     switch (rank) {
       case 1:
-        return "bg-gradient-card border-gaming-border/50 scale-105";
+        return "bg-gradient-card border-gaming-border/50 scale-105 shadow-[0_0_40px_hsl(var(--gaming-orange)/0.4)] hover:shadow-[0_0_60px_hsl(var(--gaming-orange)/0.6)]";
       case 2:
-        return "bg-gradient-card border-gaming-border/40";
+        return "bg-gradient-card border-gaming-border/40 shadow-[0_0_30px_hsl(var(--gaming-orange)/0.3)] hover:shadow-[0_0_45px_hsl(var(--gaming-orange)/0.5)]";
       case 3:
-        return "bg-gradient-card border-gaming-border/30";
+        return "bg-gradient-card border-gaming-border/30 shadow-[0_0_20px_hsl(var(--gaming-orange)/0.2)] hover:shadow-[0_0_35px_hsl(var(--gaming-orange)/0.4)]";
       default:
         return "bg-gradient-card border-gaming-border/20";
     }
