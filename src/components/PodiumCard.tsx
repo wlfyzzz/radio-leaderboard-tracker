@@ -15,7 +15,7 @@ export const PodiumCard = ({ rank, name, wager, prize, avatar, isWinner }: Podiu
   const getRankStyle = () => {
     switch (rank) {
       case 1:
-        return "bg-gradient-card border-gaming-border/50 scale-105 shadow-[0_0_40px_hsl(var(--gaming-orange)/0.4)] hover:shadow-[0_0_60px_hsl(var(--gaming-orange)/0.6)]";
+        return "bg-gradient-card border-gaming-border/50 scale-105 shadow-[0_0_40px_hsl(var(--gaming-orange)/0.4)] hover:shadow-[0_0_60px_hsl(var(--gaming-orange)/0.6)] animate-pulse-glow";
       case 2:
         return "bg-gradient-card border-gaming-border/40 shadow-[0_0_30px_hsl(var(--gaming-orange)/0.3)] hover:shadow-[0_0_45px_hsl(var(--gaming-orange)/0.5)]";
       case 3:
@@ -41,9 +41,10 @@ export const PodiumCard = ({ rank, name, wager, prize, avatar, isWinner }: Podiu
   return (
     <Card
       className={cn(
-        "relative p-6 border-2 transition-all duration-300 hover:scale-102",
+        "relative p-6 border-2 hover-lift animate-bounce-in",
         getRankStyle()
       )}
+      style={{ animationDelay: `${rank * 0.1}s` }}
     >
       <div className="text-center space-y-4">
         <div className="text-3xl font-bold text-gaming-orange mb-2">

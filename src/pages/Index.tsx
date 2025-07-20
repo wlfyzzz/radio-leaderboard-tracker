@@ -1,160 +1,174 @@
-import { useLeaderboard } from "@/hooks/useLeaderboard";
 import { PodiumCard } from "@/components/PodiumCard";
 import { LeaderboardTable } from "@/components/LeaderboardTable";
-import { Card } from "@/components/ui/card";
+import { PodiumCardSkeleton, LeaderboardRowSkeleton } from "@/components/EnhancedSkeleton";
+import { NetworkErrorDisplay, ErrorBoundary } from "@/components/ErrorBoundary";
 import { Badge } from "@/components/ui/badge";
-import { Skeleton } from "@/components/ui/skeleton";
-import { AlertCircle, Radio, Trophy, Zap } from "lucide-react";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import { useLeaderboard } from "@/hooks/useLeaderboard";
+import { RefreshCw, TrendingUp, Users, Clock, Radio, Zap } from "lucide-react";
 
 const Index = () => {
-  const { data: leaderboardData, isLoading, error } = useLeaderboard();
+  const { data, isLoading, error, refetch, isRefetching } = useLeaderboard();
 
-  const topThree = leaderboardData?.slice(0, 3) || [];
-  const remainingEntries = leaderboardData?.slice(3) || [];
-
-  if (error) {
-    return (
-      <div className="min-h-screen bg-background p-6 flex items-center justify-center">
-        <Alert className="max-w-md border-destructive">
-          <AlertCircle className="h-4 w-4" />
-          <AlertDescription>
-            Failed to load leaderboard data. Please try again later.
-          </AlertDescription>
-        </Alert>
-      </div>
-    );
-  }
+  const handleRetry = () => {
+    refetch();
+  };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="container mx-auto px-6 py-8">
-        <div className="text-center mb-12">
-          <div className="flex justify-center items-center gap-3 mb-6">
-            <Radio className="h-8 w-8 text-gaming-orange" />
-            <h1 className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              code radiobtw
-            </h1>
-            <Zap className="h-8 w-8 text-gaming-orange" />
-          </div>
-          
-          <p className="text-lg text-muted-foreground mb-4">
-            Track the top performers in our rain competition
-          </p>
-          
-          <div className="mb-4 p-4 bg-card border border-border rounded-lg">
-            <p className="text-center text-foreground">
-              Use code <a href="https://rain.gg/r/radiobtw" target="_blank" rel="noopener noreferrer" className="font-bold text-gaming-orange bg-gaming-orange/10 px-3 py-2 rounded border-2 border-gaming-orange/30 hover:bg-gaming-orange hover:text-gaming-dark transition-all duration-200 underline decoration-2 underline-offset-2">radiobtw</a> to participate
-            </p>
-          </div>
-          
-          <Badge 
-            variant="secondary" 
-            className="bg-gaming-orange/20 text-gaming-orange border-gaming-orange/30 px-4 py-2"
-          >
-            Updates every 15 minutes
-          </Badge>
-        </div>
+    <ErrorBoundary>
+      <div className="min-h-screen bg-background">
+        <div className="container mx-auto px-4 py-8">
+          {/* Header Section */}
+          <div className="text-center mb-12 space-y-6 animate-fade-in">
+            <div className="space-y-4">
+              <div className="flex justify-center items-center gap-3 mb-6">
+                <Radio className="h-8 w-8 text-gaming-orange animate-pulse-glow" />
+                <h1 className="text-4xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent animate-bounce-in">
+                  code radiobtw
+                </h1>
+                <Zap className="h-8 w-8 text-gaming-orange animate-pulse-glow" />
+              </div>
+              
+              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                Track the top performers in our rain competition
+              </p>
 
-        {/* Top 3 Podium */}
-        {isLoading ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
-            {[1, 2, 3].map((i) => (
-              <Card key={i} className="p-6 bg-gaming-card border-gaming-border/30">
-                <div className="text-center space-y-4">
-                  <Skeleton className="h-8 w-8 mx-auto rounded-full" />
-                  <Skeleton className="h-6 w-24 mx-auto" />
-                  <Skeleton className="h-4 w-16 mx-auto" />
-                  <Skeleton className="h-6 w-20 mx-auto" />
-                  <Skeleton className="h-8 w-16 mx-auto" />
-                </div>
-              </Card>
-            ))}
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
-            {/* Second Place */}
-            {topThree[1] && (
-              <div className="md:order-1">
-                <PodiumCard
-                  rank={2}
-                  name={topThree[1].name}
-                  wager={topThree[1].wager}
-                  prize={topThree[1].prize}
-                  avatar={topThree[1].avatar}
-                />
+              <div className="mb-4 p-4 bg-card border border-border rounded-lg hover-lift">
+                <p className="text-center text-foreground responsive-text">
+                  Use code{" "}
+                  <a 
+                    href="https://rain.gg/r/radiobtw" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="font-bold text-gaming-orange bg-gaming-orange/10 px-3 py-2 rounded border-2 border-gaming-orange/30 hover:bg-gaming-orange hover:text-gaming-dark transition-all duration-300 underline decoration-2 underline-offset-2 hover-lift"
+                  >
+                    radiobtw
+                  </a>{" "}
+                  to participate
+                </p>
               </div>
-            )}
-            
-            {/* First Place */}
-            {topThree[0] && (
-              <div className="md:order-2">
-                <PodiumCard
-                  rank={1}
-                  name={topThree[0].name}
-                  wager={topThree[0].wager}
-                  prize={topThree[0].prize}
-                  avatar={topThree[0].avatar}
-                  isWinner
-                />
-              </div>
-            )}
-            
-            {/* Third Place */}
-            {topThree[2] && (
-              <div className="md:order-3">
-                <PodiumCard
-                  rank={3}
-                  name={topThree[2].name}
-                  wager={topThree[2].wager}
-                  prize={topThree[2].prize}
-                  avatar={topThree[2].avatar}
-                />
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* Remaining Leaderboard */}
-        {remainingEntries.length > 0 && (
-          <div className="max-w-6xl mx-auto">
-            <div className="flex items-center gap-2 mb-6">
-              <Trophy className="h-5 w-5 text-gaming-orange" />
-              <h2 className="text-2xl font-bold text-gaming-orange">
-                Full Leaderboard
-              </h2>
             </div>
             
-            {isLoading ? (
-              <Card className="p-6 bg-gaming-card border-gaming-border/30">
-                <div className="space-y-4">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <div key={i} className="flex items-center space-x-4">
-                      <Skeleton className="h-4 w-8" />
-                      <Skeleton className="h-8 w-8 rounded-full" />
-                      <Skeleton className="h-4 w-32" />
-                      <Skeleton className="h-4 w-16" />
-                      <div className="flex-1" />
-                      <Skeleton className="h-4 w-20" />
+            <div className="flex flex-wrap justify-center items-center gap-4">
+              <Badge variant="secondary" className="text-sm hover-lift bg-gaming-orange/20 text-gaming-orange border-gaming-orange/30">
+                <Clock className="w-4 h-4 mr-1" />
+                Updates every 15 minutes
+              </Badge>
+              
+              <Badge variant="outline" className="text-sm">
+                <Users className="w-4 h-4 mr-1" />
+                {data?.length || 0} Players
+              </Badge>
+              
+              <Button
+                onClick={handleRetry}
+                variant="ghost"
+                size="sm"
+                disabled={isRefetching}
+                className="hover-lift"
+              >
+                <RefreshCw className={`w-4 h-4 mr-1 ${isRefetching ? 'animate-spin' : ''}`} />
+                {isRefetching ? 'Refreshing...' : 'Refresh'}
+              </Button>
+            </div>
+          </div>
+
+          {/* Error State */}
+          {error && (
+            <div className="mb-8">
+              <NetworkErrorDisplay 
+                onRetry={handleRetry} 
+                message={error.message || "Failed to load leaderboard data. Please try again."} 
+              />
+            </div>
+          )}
+
+          {/* Top 3 Podium */}
+          <div className="mb-8">
+            <div className="flex items-center justify-center mb-6">
+              <TrendingUp className="w-6 h-6 mr-2 text-gaming-orange" />
+              <h2 className="text-2xl font-bold">Top Performers</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 responsive-grid max-w-4xl mx-auto">
+              {isLoading ? (
+                Array.from({ length: 3 }).map((_, index) => (
+                  <PodiumCardSkeleton key={index} />
+                ))
+              ) : (
+                <>
+                  {/* Second Place */}
+                  {data?.[1] && (
+                    <div className="md:order-1">
+                      <PodiumCard
+                        rank={2}
+                        name={data[1].name}
+                        wager={data[1].wager}
+                        prize={data[1].prize}
+                        avatar={data[1].avatar}
+                      />
                     </div>
+                  )}
+                  
+                  {/* First Place */}
+                  {data?.[0] && (
+                    <div className="md:order-2">
+                      <PodiumCard
+                        rank={1}
+                        name={data[0].name}
+                        wager={data[0].wager}
+                        prize={data[0].prize}
+                        avatar={data[0].avatar}
+                        isWinner
+                      />
+                    </div>
+                  )}
+                  
+                  {/* Third Place */}
+                  {data?.[2] && (
+                    <div className="md:order-3">
+                      <PodiumCard
+                        rank={3}
+                        name={data[2].name}
+                        wager={data[2].wager}
+                        prize={data[2].prize}
+                        avatar={data[2].avatar}
+                      />
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+
+          {/* Remaining Leaderboard */}
+          {(isLoading || (data && data.length > 3)) && (
+            <div className="bg-gradient-card border border-gaming-border/30 rounded-lg p-6 animate-slide-up hover-lift max-w-6xl mx-auto">
+              <h2 className="text-2xl font-bold mb-6 text-center">Full Leaderboard</h2>
+              
+              {isLoading ? (
+                <div className="space-y-2">
+                  {Array.from({ length: 7 }).map((_, index) => (
+                    <LeaderboardRowSkeleton key={index} />
                   ))}
                 </div>
-              </Card>
-            ) : (
-              <LeaderboardTable data={remainingEntries} startFromRank={4} />
-            )}
-          </div>
-        )}
+              ) : (
+                data && data.length > 3 && (
+                  <LeaderboardTable data={data.slice(3)} startFromRank={4} />
+                )
+              )}
+            </div>
+          )}
 
-        {/* Footer */}
-        <div className="text-center mt-12 text-muted-foreground">
-          <p className="text-sm">
-            Data updates automatically every 15 minutes
-          </p>
+          {/* Footer */}
+          <div className="text-center mt-12 text-muted-foreground">
+            <p className="text-sm">
+              Data updates automatically every 15 minutes
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </ErrorBoundary>
   );
 };
 
