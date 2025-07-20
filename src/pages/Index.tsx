@@ -34,7 +34,7 @@ const Index = () => {
           <div className="flex justify-center items-center gap-3 mb-6">
             <Radio className="h-8 w-8 text-gaming-orange" />
             <h1 className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              Rain.gg Leaderboard
+              code radiobtw
             </h1>
             <Zap className="h-8 w-8 text-gaming-orange" />
           </div>
@@ -45,7 +45,7 @@ const Index = () => {
           
           <div className="mb-4 p-4 bg-card border border-border rounded-lg">
             <p className="text-center text-foreground">
-              Use code <a href="https://rain.gg/r/radiobtw" target="_blank" rel="noopener noreferrer" className="font-bold text-gaming-orange bg-gaming-orange/10 px-2 py-1 rounded hover:bg-gaming-orange/20 transition-colors">radiobtw</a> to participate
+              Use code <a href="https://rain.gg/r/radiobtw" target="_blank" rel="noopener noreferrer" className="font-bold text-gaming-orange bg-gaming-orange/10 px-3 py-2 rounded border-2 border-gaming-orange/30 hover:bg-gaming-orange hover:text-gaming-dark transition-all duration-200 underline decoration-2 underline-offset-2">radiobtw</a> to participate
             </p>
           </div>
           
