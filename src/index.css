@@ -85,6 +85,7 @@ All colors MUST be HSL.
     --input: 217 33% 15%;
     --ring: 31 100% 65%;
   }
+}
 
 @layer base {
   * {
