@@ -24,7 +24,7 @@ const Index = () => {
               <div className="flex justify-center items-center gap-3 mb-6">
                 <Radio className="h-8 w-8 text-gaming-orange animate-pulse-glow" />
                 <h1 className="text-4xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent animate-bounce-in">
-                  code radiobtw
+                  Code radiobtw
                 </h1>
                 <Zap className="h-8 w-8 text-gaming-orange animate-pulse-glow" />
               </div>
@@ -50,15 +50,11 @@ const Index = () => {
             </div>
             
             <div className="flex flex-wrap justify-center items-center gap-4">
-              <Badge variant="secondary" className="text-sm hover-lift bg-gaming-orange/20 text-gaming-orange border-gaming-orange/30">
+              {/* <Badge variant="secondary" className="text-sm hover-lift bg-gaming-orange/20 text-gaming-orange border-gaming-orange/30">
                 <Clock className="w-4 h-4 mr-1" />
                 Updates every 15 minutes
               </Badge>
-              
-              <Badge variant="outline" className="text-sm">
-                <Users className="w-4 h-4 mr-1" />
-                {data?.length || 0} Players
-              </Badge>
+
               
               <Button
                 onClick={handleRetry}
@@ -69,7 +65,7 @@ const Index = () => {
               >
                 <RefreshCw className={`w-4 h-4 mr-1 ${isRefetching ? 'animate-spin' : ''}`} />
                 {isRefetching ? 'Refreshing...' : 'Refresh'}
-              </Button>
+              </Button> */}
             </div>
           </div>
 
@@ -143,8 +139,7 @@ const Index = () => {
 
           {/* Remaining Leaderboard */}
           {(isLoading || (data && data.length > 3)) && (
-            <div className="bg-gradient-card border border-gaming-border/30 rounded-lg p-6 animate-slide-up hover-lift max-w-6xl mx-auto">
-              <h2 className="text-2xl font-bold mb-6 text-center">Full Leaderboard</h2>
+            <div className="bg-gradient-card  rounded-lg p-6 animate-slide-up hover-lift max-w-6xl mx-auto">
               
               {isLoading ? (
                 <div className="space-y-2">
@@ -162,9 +157,10 @@ const Index = () => {
 
           {/* Footer */}
           <div className="text-center mt-12 text-muted-foreground">
-            <p className="text-sm">
-              Data updates automatically every 15 minutes
-            </p>
+<a href="https://wlfyzz.net" target="_blank" rel="noopener noreferrer" className="text-sm">
+  made with ♥ by wlfyzz.net
+</a>
+
           </div>
         </div>
       </div>
