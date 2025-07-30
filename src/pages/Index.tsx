@@ -18,7 +18,6 @@ const Index = () => {
     <ErrorBoundary>
       <div className="min-h-screen bg-background">
         <div className="container mx-auto px-4 py-8">
-          {/* Header Section */}
           <div className="text-center mb-12 space-y-6 animate-fade-in">
             <div className="space-y-4">
               <div className="flex justify-center items-center gap-3 mb-6">
