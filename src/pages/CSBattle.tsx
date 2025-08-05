@@ -2,14 +2,13 @@ import { PodiumCard } from "@/components/PodiumCard";
 import { LeaderboardTable } from "@/components/LeaderboardTable";
 import { PodiumCardSkeleton, LeaderboardRowSkeleton } from "@/components/EnhancedSkeleton";
 import { NetworkErrorDisplay, ErrorBoundary } from "@/components/ErrorBoundary";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { useLeaderboard } from "@/hooks/useLeaderboard";
-import { RefreshCw, TrendingUp, Users, Clock, Radio, Zap, Sword } from "lucide-react";
+import { useCSBattleLeaderboard } from "@/hooks/useCSBattleLeaderboard";
+import { TrendingUp, Sword, Home, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const Index = () => {
-  const { data, isLoading, error, refetch, isRefetching } = useLeaderboard();
+const CSBattle = () => {
+  const { data, isLoading, error, refetch, isRefetching } = useCSBattleLeaderboard();
 
   const handleRetry = () => {
     refetch();
@@ -22,22 +21,22 @@ const Index = () => {
           <div className="text-center mb-12 space-y-6 animate-fade-in">
             <div className="space-y-4">
               <div className="flex justify-center items-center gap-3 mb-6">
-                <Radio className="h-8 w-8 text-gaming-orange animate-pulse-glow" />
+                <Sword className="h-8 w-8 text-gaming-orange animate-pulse-glow" />
                 <h1 className="text-4xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent animate-bounce-in">
-                  Rain.gg Leaderboard
+                  CSBattle Leaderboard
                 </h1>
-                <Zap className="h-8 w-8 text-gaming-orange animate-pulse-glow" />
+                <Sword className="h-8 w-8 text-gaming-orange animate-pulse-glow" />
               </div>
               
               <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Track the top performers in our Rain.gg competition
+                Track the top performers in our CSBattle competition
               </p>
 
               <div className="mb-4 p-4 bg-card border border-border rounded-lg hover-lift">
                 <p className="text-center text-foreground responsive-text">
                   Use code{" "}
                   <a 
-                    href="https://rain.gg/r/radiobtw" 
+                    href="https://csbattle.com/r/radiobtw" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="font-bold text-gaming-orange bg-gaming-orange/10 px-3 py-2 rounded border-2 border-gaming-orange/30 hover:bg-gaming-orange hover:text-gaming-dark transition-all duration-300 underline decoration-2 underline-offset-2 hover-lift"
@@ -49,32 +48,13 @@ const Index = () => {
               </div>
 
               <div className="flex justify-center mb-6">
-                <Link to="/csbattle">
+                <Link to="/">
                   <Button variant="outline" className="hover-lift">
-                    <Sword className="w-4 h-4 mr-2" />
-                    View CSBattle Leaderboard
+                    <ArrowLeft className="w-4 h-4 mr-2" />
+                    Back to Rain.gg
                   </Button>
                 </Link>
               </div>
-            </div>
-            
-            <div className="flex flex-wrap justify-center items-center gap-4">
-              {/* <Badge variant="secondary" className="text-sm hover-lift bg-gaming-orange/20 text-gaming-orange border-gaming-orange/30">
-                <Clock className="w-4 h-4 mr-1" />
-                Updates every 15 minutes
-              </Badge>
-
-              
-              <Button
-                onClick={handleRetry}
-                variant="ghost"
-                size="sm"
-                disabled={isRefetching}
-                className="hover-lift"
-              >
-                <RefreshCw className={`w-4 h-4 mr-1 ${isRefetching ? 'animate-spin' : ''}`} />
-                {isRefetching ? 'Refreshing...' : 'Refresh'}
-              </Button> */}
             </div>
           </div>
 
@@ -148,8 +128,7 @@ const Index = () => {
 
           {/* Remaining Leaderboard */}
           {(isLoading || (data && data.length > 3)) && (
-            <div className="bg-gradient-card  rounded-lg p-6 animate-slide-up hover-lift max-w-6xl mx-auto">
-              
+            <div className="bg-gradient-card rounded-lg p-6 animate-slide-up hover-lift max-w-6xl mx-auto">
               {isLoading ? (
                 <div className="space-y-2">
                   {Array.from({ length: 7 }).map((_, index) => (
@@ -166,10 +145,9 @@ const Index = () => {
 
           {/* Footer */}
           <div className="text-center mt-12 text-muted-foreground">
-<a href="https://wlfyzz.net" target="_blank" rel="noopener noreferrer" className="text-sm">
-  made with ♥ by wlfyzz.net
-</a>
-
+            <a href="https://wlfyzz.net" target="_blank" rel="noopener noreferrer" className="text-sm">
+              made with ♥ by wlfyzz.net
+            </a>
           </div>
         </div>
       </div>
@@ -177,4 +155,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default CSBattle;

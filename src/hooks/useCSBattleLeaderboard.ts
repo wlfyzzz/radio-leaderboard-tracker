@@ -7,12 +7,12 @@ interface LeaderboardEntry {
   avatar: string;
 }
 
-const fetchLeaderboard = async (): Promise<LeaderboardEntry[]> => {
+const fetchCSBattleLeaderboard = async (): Promise<LeaderboardEntry[]> => {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
   
   try {
-    const response = await fetch("https://api.wlfyzz.net/radio/rain", {
+    const response = await fetch("https://api.wlfyzz.net/radio/csbattle", {
       signal: controller.signal,
       headers: {
         'Accept': 'application/json',
@@ -27,7 +27,7 @@ const fetchLeaderboard = async (): Promise<LeaderboardEntry[]> => {
     }
     
     const data = await response.json();
-    return data.participants	 || [];
+    return data.participants || [];
   } catch (error: any) {
     clearTimeout(timeoutId);
     
@@ -41,10 +41,10 @@ const fetchLeaderboard = async (): Promise<LeaderboardEntry[]> => {
   }
 };
 
-export const useLeaderboard = () => {
+export const useCSBattleLeaderboard = () => {
   return useQuery({
-    queryKey: ["leaderboard"],
-    queryFn: fetchLeaderboard,
+    queryKey: ["csbattle-leaderboard"],
+    queryFn: fetchCSBattleLeaderboard,
     refetchInterval: 15 * 60 * 1000, // Refetch every 15 minutes
     refetchIntervalInBackground: true,
     retry: (failureCount, error) => {
