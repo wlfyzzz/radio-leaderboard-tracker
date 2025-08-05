@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { useCSBattleLeaderboard } from "@/hooks/useCSBattleLeaderboard";
 import { TrendingUp, Sword, Home, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import rainLogo from "@/assets/rain.png";
+import csbattleLogo from "@/assets/csbattle.png";
 
 const CSBattle = () => {
   const { data, isLoading, error, refetch, isRefetching } = useCSBattleLeaderboard();
@@ -20,6 +22,27 @@ const CSBattle = () => {
         <div className="container mx-auto px-4 py-8">
           <div className="text-center mb-12 space-y-6 animate-fade-in">
             <div className="space-y-4">
+              {/* Logo Switcher */}
+              <div className="flex justify-center items-center gap-6 mb-8">
+                <Link to="/">
+                  <img 
+                    src={rainLogo} 
+                    alt="Rain.gg" 
+                    className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
+                  />
+                </Link>
+                <div className="relative">
+                  <img 
+                    src={csbattleLogo} 
+                    alt="CSBattle" 
+                    className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 border-2 border-gaming-orange rounded-lg shadow-lg" 
+                  />
+                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
+                    <div className="w-2 h-2 bg-gaming-orange rounded-full animate-pulse"></div>
+                  </div>
+                </div>
+              </div>
+
               <div className="flex justify-center items-center gap-3 mb-6">
                 <Sword className="h-8 w-8 text-gaming-orange animate-pulse-glow" />
                 <h1 className="text-4xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent animate-bounce-in">
