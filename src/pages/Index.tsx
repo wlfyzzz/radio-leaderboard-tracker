@@ -9,7 +9,7 @@ import { CountdownTimer } from "@/components/CountdownTimer";
 import { RefreshCw, TrendingUp, Users, Clock, Radio, Zap, Sword } from "lucide-react";
 import { Link } from "react-router-dom";
 import rainLogo from "@/assets/rain.png";
-import csbattleLogo from "@/assets/csbattle.svg";
+import csbattleLogo from "@/assets/csbattle.png";
 
 const Index = () => {
   const { data, isLoading, error, refetch, isRefetching } = useLeaderboard();
