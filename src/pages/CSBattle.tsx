@@ -8,7 +8,7 @@ import { TrendingUp, Sword, Home, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
 import { CountdownTimer } from "@/components/CountdownTimer";
 import rainLogo from "@/assets/rain.png";
-import csbattleLogo from "@/assets/csbattle.svg";
+import csbattleLogo from "@/assets/csbattle.png";
 
 const CSBattle = () => {
   const { data, isLoading, error, refetch, isRefetching } = useCSBattleLeaderboard();
