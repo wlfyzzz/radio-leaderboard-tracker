@@ -5,10 +5,11 @@ import { NetworkErrorDisplay, ErrorBoundary } from "@/components/ErrorBoundary";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useLeaderboard } from "@/hooks/useLeaderboard";
+import { CountdownTimer } from "@/components/CountdownTimer";
 import { RefreshCw, TrendingUp, Users, Clock, Radio, Zap, Sword } from "lucide-react";
 import { Link } from "react-router-dom";
 import rainLogo from "@/assets/rain.png";
-import csbattleLogo from "@/assets/csbattle.png";
+import csbattleLogo from "@/assets/csbattle.svg";
 
 const Index = () => {
   const { data, isLoading, error, refetch, isRefetching } = useLeaderboard();
@@ -72,12 +73,10 @@ const Index = () => {
               </div>
 
               <div className="flex justify-center mb-6">
-                <Link to="/csbattle">
-                  <Button variant="outline" className="hover-lift">
-                    <Sword className="w-4 h-4 mr-2" />
-                    View CSBattle Leaderboard
-                  </Button>
-                </Link>
+                <CountdownTimer 
+                  endDate="2025-08-10T23:59:59.999Z" 
+                  title="Rain Competition Ends in"
+                />
               </div>
             </div>
             

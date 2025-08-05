@@ -6,8 +6,9 @@ import { Button } from "@/components/ui/button";
 import { useCSBattleLeaderboard } from "@/hooks/useCSBattleLeaderboard";
 import { TrendingUp, Sword, Home, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import { CountdownTimer } from "@/components/CountdownTimer";
 import rainLogo from "@/assets/rain.png";
-import csbattleLogo from "@/assets/csbattle.png";
+import csbattleLogo from "@/assets/csbattle.svg";
 
 const CSBattle = () => {
   const { data, isLoading, error, refetch, isRefetching } = useCSBattleLeaderboard();
@@ -71,12 +72,10 @@ const CSBattle = () => {
               </div>
 
               <div className="flex justify-center mb-6">
-                <Link to="/">
-                  <Button variant="outline" className="hover-lift">
-                    <ArrowLeft className="w-4 h-4 mr-2" />
-                    Back to Rain.gg
-                  </Button>
-                </Link>
+                <CountdownTimer 
+                  endDate="2025-08-05T17:52:05.000Z" 
+                  title="CSBattle Competition Ends in"
+                />
               </div>
             </div>
           </div>
