@@ -168,7 +168,7 @@ const CSBattle = () => {
 
           {/* Footer */}
           <div className="text-center mt-12 text-muted-foreground">
-            <a href="https://wlfyzz.net" target="_blank" rel="noopener noreferrer" className="text-sm">
+            <a href="https://wlfyzz.net" target="_blank" rel="noopener noreferrer" className="text-sm emoji-no-shadow">
               made with ♥ by wlfyzz.net
             </a>
           </div>

@@ -164,7 +164,13 @@ All colors MUST be HSL.
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite;
   }
-}
+  }
+  
+  /* Fix emoji shadows */
+  .emoji-no-shadow {
+    text-shadow: none !important;
+    filter: none !important;
+  }
 
 @keyframes fadeIn {
   from {
