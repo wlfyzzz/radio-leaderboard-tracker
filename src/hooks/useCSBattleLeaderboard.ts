@@ -7,7 +7,12 @@ interface LeaderboardEntry {
   avatar: string;
 }
 
-const fetchCSBattleLeaderboard = async (): Promise<LeaderboardEntry[]> => {
+interface CSBattleData {
+  participants: LeaderboardEntry[];
+  ends_at: string;
+}
+
+const fetchCSBattleLeaderboard = async (): Promise<CSBattleData> => {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
   
@@ -27,7 +32,10 @@ const fetchCSBattleLeaderboard = async (): Promise<LeaderboardEntry[]> => {
     }
     
     const data = await response.json();
-    return data.participants || [];
+    return {
+      participants: data.participants || [],
+      ends_at: data.ends_at
+    };
   } catch (error: any) {
     clearTimeout(timeoutId);
     

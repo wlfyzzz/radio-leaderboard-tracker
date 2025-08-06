@@ -71,12 +71,14 @@ const CSBattle = () => {
                 </p>
               </div>
 
-              <div className="flex justify-center mb-6">
-                <CountdownTimer 
-                  endDate="2025-08-05T17:52:05.000Z" 
-                  title="CSBattle Competition Ends in"
-                />
-              </div>
+              {data?.ends_at && (
+                <div className="flex justify-center mb-6">
+                  <CountdownTimer 
+                    endDate={data.ends_at} 
+                    title="CSBattle Competition Ends in"
+                  />
+                </div>
+              )}
             </div>
           </div>
 
@@ -105,41 +107,41 @@ const CSBattle = () => {
               ) : (
                 <>
                   {/* Second Place */}
-                  {data?.[1] && (
+                  {data?.participants?.[1] && (
                     <div className="md:order-1">
                       <PodiumCard
                         rank={2}
-                        name={data[1].name}
-                        wager={data[1].wager}
-                        prize={data[1].prize}
-                        avatar={data[1].avatar}
+                        name={data.participants[1].name}
+                        wager={data.participants[1].wager}
+                        prize={data.participants[1].prize}
+                        avatar={data.participants[1].avatar}
                       />
                     </div>
                   )}
                   
                   {/* First Place */}
-                  {data?.[0] && (
+                  {data?.participants?.[0] && (
                     <div className="md:order-2">
                       <PodiumCard
                         rank={1}
-                        name={data[0].name}
-                        wager={data[0].wager}
-                        prize={data[0].prize}
-                        avatar={data[0].avatar}
+                        name={data.participants[0].name}
+                        wager={data.participants[0].wager}
+                        prize={data.participants[0].prize}
+                        avatar={data.participants[0].avatar}
                         isWinner
                       />
                     </div>
                   )}
                   
                   {/* Third Place */}
-                  {data?.[2] && (
+                  {data?.participants?.[2] && (
                     <div className="md:order-3">
                       <PodiumCard
                         rank={3}
-                        name={data[2].name}
-                        wager={data[2].wager}
-                        prize={data[2].prize}
-                        avatar={data[2].avatar}
+                        name={data.participants[2].name}
+                        wager={data.participants[2].wager}
+                        prize={data.participants[2].prize}
+                        avatar={data.participants[2].avatar}
                       />
                     </div>
                   )}
@@ -149,7 +151,7 @@ const CSBattle = () => {
           </div>
 
           {/* Remaining Leaderboard */}
-          {(isLoading || (data && data.length > 3)) && (
+          {(isLoading || (data && data.participants.length > 3)) && (
             <div className="bg-gradient-card rounded-lg p-6 animate-slide-up hover-lift max-w-6xl mx-auto">
               {isLoading ? (
                 <div className="space-y-2">
@@ -158,8 +160,8 @@ const CSBattle = () => {
                   ))}
                 </div>
               ) : (
-                data && data.length > 3 && (
-                  <LeaderboardTable data={data.slice(3)} startFromRank={4} />
+                data && data.participants.length > 3 && (
+                  <LeaderboardTable data={data.participants.slice(3)} startFromRank={4} />
                 )
               )}
             </div>
