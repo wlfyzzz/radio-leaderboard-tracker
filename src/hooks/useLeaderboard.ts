@@ -6,8 +6,12 @@ interface LeaderboardEntry {
   prize: string;
   avatar: string;
 }
+interface RainData {
+  participants: LeaderboardEntry[];
+  ends_at: string;
+}
 
-const fetchLeaderboard = async (): Promise<LeaderboardEntry[]> => {
+const fetchLeaderboard = async (): Promise<RainData> => {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
   
@@ -27,7 +31,10 @@ const fetchLeaderboard = async (): Promise<LeaderboardEntry[]> => {
     }
     
     const data = await response.json();
-    return data.participants	 || [];
+    return {
+      participants: data.participants || [],
+      ends_at: data.ends_at
+    };
   } catch (error: any) {
     clearTimeout(timeoutId);
     
