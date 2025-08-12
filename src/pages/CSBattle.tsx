@@ -96,7 +96,18 @@ const CSBattle = () => {
           <div className="mb-8">
             <div className="flex items-center justify-center mb-6">
               <TrendingUp className="w-6 h-6 mr-2 text-gaming-orange" />
-              <h2 className="text-2xl font-bold">Top Performers</h2>
+              <h2 className="text-2xl font-bold">
+  Leaderboard disabled until further notice.{' '}
+  <a 
+    href="https://discord.com/channels/1081162839433150475/1081162841026986136/1404877163240493159" 
+    className="text-blue-500 underline" 
+    target="_blank" 
+    rel="noopener noreferrer"
+  >
+    Read why
+  </a>
+</h2>
+
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 responsive-grid max-w-4xl mx-auto">
