@@ -8,7 +8,7 @@ import { useSkinraveLeaderboard } from "@/hooks/useSkinraveLeaderboard";
 import { CountdownTimer } from "@/components/CountdownTimer";
 import { RefreshCw, TrendingUp, Users, Clock, Radio, Zap, Sword } from "lucide-react";
 import { Link } from "react-router-dom";
-import skinraveLogo from "@/assets/skinrave.png";
+import skinraveLogo from "@/assets/skinrave.svg";
 import rainLogo from "@/assets/rain.png";
 
 const Skinrave = () => {
