@@ -4,15 +4,15 @@ import { PodiumCardSkeleton, LeaderboardRowSkeleton } from "@/components/Enhance
 import { NetworkErrorDisplay, ErrorBoundary } from "@/components/ErrorBoundary";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { useLeaderboard } from "@/hooks/useLeaderboard";
+import { useSkinraveLeaderboard } from "@/hooks/useSkinraveLeaderboard";
 import { CountdownTimer } from "@/components/CountdownTimer";
 import { RefreshCw, TrendingUp, Users, Clock, Radio, Zap, Sword } from "lucide-react";
 import { Link } from "react-router-dom";
-import rainLogo from "@/assets/rain.png";
 import skinraveLogo from "@/assets/skinrave.png";
+import rainLogo from "@/assets/rain.png";
 
-const Index = () => {
-  const { data, isLoading, error, refetch, isRefetching } = useLeaderboard();
+const Skinrave = () => {
+  const { data, isLoading, error, refetch, isRefetching } = useSkinraveLeaderboard();
 
   const handleRetry = () => {
     refetch();
@@ -28,18 +28,18 @@ const Index = () => {
               <div className="flex justify-center items-center gap-6 mb-8">
                 <div className="relative">
                   <img 
-                    src={rainLogo} 
-                    alt="Rain.gg" 
+                    src={skinraveLogo} 
+                    alt="Skinrave" 
                     className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 border-2 border-gaming-orange rounded-lg shadow-lg" 
                   />
                   <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
                     <div className="w-2 h-2 bg-gaming-orange rounded-full animate-pulse"></div>
                   </div>
                 </div>
-                <Link to="/skinrave">
+                <Link to="/">
                   <img 
-                    src={skinraveLogo} 
-                    alt="Skinrave" 
+                    src={rainLogo} 
+                    alt="Rain.gg" 
                     className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
                   />
                 </Link>
@@ -48,20 +48,20 @@ const Index = () => {
               <div className="flex justify-center items-center gap-3 mb-6">
                 <Radio className="h-8 w-8 text-gaming-orange animate-pulse-glow" />
                 <h1 className="text-4xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent animate-bounce-in">
-                  Rain.gg Leaderboard
+                  Skinrave Leaderboard
                 </h1>
                 <Zap className="h-8 w-8 text-gaming-orange animate-pulse-glow" />
               </div>
               
               <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Track the top performers in our Rain.gg competition
+                Track the top performers in our Skinrave competition
               </p>
 
               <div className="mb-4 p-4 bg-card border border-border rounded-lg hover-lift">
                 <p className="text-center text-foreground responsive-text">
                   Use code{" "}
                   <a 
-                    href="https://rain.gg/r/radiobtw" 
+                    href="https://skinrave.gg/r/radiobtw" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="font-bold text-gaming-orange bg-gaming-orange/10 px-3 py-2 rounded border-2 border-gaming-orange/30 hover:bg-gaming-orange hover:text-gaming-dark transition-all duration-300 underline decoration-2 underline-offset-2 hover-lift"
@@ -76,7 +76,7 @@ const Index = () => {
                 <div className="flex justify-center mb-6">
                   <CountdownTimer 
                     endDate={data.ends_at} 
-                    title="Rain Competition Ends in"
+                    title="Skinrave Competition Ends in"
                   />
                 </div>
               )}
@@ -201,4 +201,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Skinrave;
