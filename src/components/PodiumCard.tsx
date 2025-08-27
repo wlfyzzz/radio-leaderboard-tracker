@@ -9,9 +9,10 @@ interface PodiumCardProps {
   prize: string;
   avatar: string;
   isWinner?: boolean;
+  coinIcon?: string;
 }
 
-export const PodiumCard = ({ rank, name, wager, prize, avatar, isWinner }: PodiumCardProps) => {
+export const PodiumCard = ({ rank, name, wager, prize, avatar, isWinner, coinIcon = "https://toastyy.gg/assets/rain.svg" }: PodiumCardProps) => {
   const getRankStyle = () => {
     switch (rank) {
       case 1:
@@ -84,7 +85,7 @@ export const PodiumCard = ({ rank, name, wager, prize, avatar, isWinner }: Podiu
           variant="secondary" 
           className="bg-gaming-orange text-gaming-dark font-bold text-lg px-4 py-2"
         >
-          <img src="https://toastyy.gg/assets/rain.svg" alt="Rain" className="w-5 h-5 mr-2" />
+          <img src={coinIcon} alt="Coin" className="w-5 h-5 mr-2" />
           {prize}
         </Badge>
       </div>

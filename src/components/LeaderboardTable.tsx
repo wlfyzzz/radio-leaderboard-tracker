@@ -18,9 +18,10 @@ interface LeaderboardEntry {
 interface LeaderboardTableProps {
   data: LeaderboardEntry[];
   startFromRank?: number;
+  coinIcon?: string;
 }
 
-export const LeaderboardTable = ({ data, startFromRank = 4 }: LeaderboardTableProps) => {
+export const LeaderboardTable = ({ data, startFromRank = 4, coinIcon = "https://toastyy.gg/assets/rain.svg" }: LeaderboardTableProps) => {
   return (
     <div className="rounded-lg border border-gaming-border/30 bg-gaming-card/50 backdrop-blur-sm">
       <Table>
@@ -66,7 +67,7 @@ export const LeaderboardTable = ({ data, startFromRank = 4 }: LeaderboardTablePr
                     variant="secondary" 
                     className="bg-gaming-orange/20 text-gaming-orange border-gaming-orange/30"
                   >
-                    <img src="https://toastyy.gg/assets/rain.svg" alt="Rain" className="w-4 h-4 mr-1" />
+                    <img src={coinIcon} alt="Coin" className="w-4 h-4 mr-1" />
                     {entry.prize}
                   </Badge>
                 </TableCell>

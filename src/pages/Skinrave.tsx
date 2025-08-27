@@ -10,6 +10,7 @@ import { RefreshCw, TrendingUp, Users, Clock, Radio, Zap, Sword } from "lucide-r
 import { Link } from "react-router-dom";
 import skinraveLogo from "@/assets/skinrave.svg";
 import rainLogo from "@/assets/rain.png";
+import skinraveCoin from "@/assets/skinrave-coin.png";
 
 const Skinrave = () => {
   const { data, isLoading, error, refetch, isRefetching } = useSkinraveLeaderboard();
@@ -135,6 +136,7 @@ const Skinrave = () => {
                         wager={data.participants[1].wager}
                         prize={data.participants[1].prize}
                         avatar={data.participants[1].avatar}
+                        coinIcon={skinraveCoin}
                       />
                     </div>
                   )}
@@ -148,6 +150,7 @@ const Skinrave = () => {
                         wager={data.participants[0].wager}
                         prize={data.participants[0].prize}
                         avatar={data.participants[0].avatar}
+                        coinIcon={skinraveCoin}
                         isWinner
                       />
                     </div>
@@ -162,6 +165,7 @@ const Skinrave = () => {
                         wager={data.participants[2].wager}
                         prize={data.participants[2].prize}
                         avatar={data.participants[2].avatar}
+                        coinIcon={skinraveCoin}
                       />
                     </div>
                   )}
@@ -182,7 +186,7 @@ const Skinrave = () => {
                 </div>
               ) : (
                 data && data.participants.length > 3 && (
-                  <LeaderboardTable data={data.participants.slice(3)} startFromRank={4} />
+                  <LeaderboardTable data={data.participants.slice(3)} startFromRank={4} coinIcon={skinraveCoin} />
                 )
               )}
             </div>
