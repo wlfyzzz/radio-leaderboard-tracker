@@ -10,6 +10,7 @@ import { RefreshCw, TrendingUp, Users, Clock, Radio, Zap, Sword } from "lucide-r
 import { Link } from "react-router-dom";
 import rainLogo from "@/assets/rain.png";
 import skinraveLogo from "@/assets/skinrave.svg";
+import clashLogo from "@/assets/clash.png";
 
 const Index = () => {
   const { data, isLoading, error, refetch, isRefetching } = useLeaderboard();
@@ -40,6 +41,13 @@ const Index = () => {
                   <img 
                     src={skinraveLogo} 
                     alt="Skinrave" 
+                    className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
+                  />
+                </Link>
+                <Link to="/clash">
+                  <img 
+                    src={clashLogo} 
+                    alt="Clash.gg" 
                     className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
                   />
                 </Link>

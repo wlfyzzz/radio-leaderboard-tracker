@@ -4,17 +4,17 @@ import { PodiumCardSkeleton, LeaderboardRowSkeleton } from "@/components/Enhance
 import { NetworkErrorDisplay, ErrorBoundary } from "@/components/ErrorBoundary";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { useSkinraveLeaderboard } from "@/hooks/useSkinraveLeaderboard";
+import { useClashLeaderboard } from "@/hooks/useClashLeaderboard";
 import { CountdownTimer } from "@/components/CountdownTimer";
 import { RefreshCw, TrendingUp, Users, Clock, Radio, Zap, Sword } from "lucide-react";
 import { Link } from "react-router-dom";
-import skinraveLogo from "@/assets/skinrave.svg";
-import rainLogo from "@/assets/rain.png";
 import clashLogo from "@/assets/clash.png";
-import skinraveCoin from "@/assets/skinrave-coin.png";
+import rainLogo from "@/assets/rain.png";
+import skinraveLogo from "@/assets/skinrave.svg";
+import gemCoin from "@/assets/gem.svg";
 
-const Skinrave = () => {
-  const { data, isLoading, error, refetch, isRefetching } = useSkinraveLeaderboard();
+const Clash = () => {
+  const { data, isLoading, error, refetch, isRefetching } = useClashLeaderboard();
 
   const handleRetry = () => {
     refetch();
@@ -30,8 +30,8 @@ const Skinrave = () => {
               <div className="flex justify-center items-center gap-6 mb-8">
                 <div className="relative">
                   <img 
-                    src={skinraveLogo} 
-                    alt="Skinrave" 
+                    src={clashLogo} 
+                    alt="Clash.gg" 
                     className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 border-2 border-gaming-orange rounded-lg shadow-lg" 
                   />
                   <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
@@ -45,10 +45,10 @@ const Skinrave = () => {
                     className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
                   />
                 </Link>
-                <Link to="/clash">
+                <Link to="/skinrave">
                   <img 
-                    src={clashLogo} 
-                    alt="Clash.gg" 
+                    src={skinraveLogo} 
+                    alt="Skinrave" 
                     className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
                   />
                 </Link>
@@ -57,20 +57,20 @@ const Skinrave = () => {
               <div className="flex justify-center items-center gap-3 mb-6">
                 <Radio className="h-8 w-8 text-gaming-orange animate-pulse-glow" />
                 <h1 className="text-4xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent animate-bounce-in">
-                  Skinrave Leaderboard
+                  Clash.gg Leaderboard
                 </h1>
                 <Zap className="h-8 w-8 text-gaming-orange animate-pulse-glow" />
               </div>
               
               <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Track the top performers in our Skinrave competition
+                Track the top performers in our Clash.gg competition
               </p>
 
               <div className="mb-4 p-4 bg-card border border-border rounded-lg hover-lift">
                 <p className="text-center text-foreground responsive-text">
                   Use code{" "}
                   <a 
-                    href="https://skinrave.gg/r/radiobtw" 
+                    href="https://clash.gg/r/radiobtw" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="font-bold text-gaming-orange bg-gaming-orange/10 px-3 py-2 rounded border-2 border-gaming-orange/30 hover:bg-gaming-orange hover:text-gaming-dark transition-all duration-300 underline decoration-2 underline-offset-2 hover-lift"
@@ -85,29 +85,10 @@ const Skinrave = () => {
                 <div className="flex justify-center mb-6">
                   <CountdownTimer 
                     endDate={data.ends_at} 
-                    title="Skinrave Competition Ends in"
+                    title="Clash.gg Competition Ends in"
                   />
                 </div>
               )}
-            </div>
-            
-            <div className="flex flex-wrap justify-center items-center gap-4">
-              {/* <Badge variant="secondary" className="text-sm hover-lift bg-gaming-orange/20 text-gaming-orange border-gaming-orange/30">
-                <Clock className="w-4 h-4 mr-1" />
-                Updates every 15 minutes
-              </Badge>
-
-              
-              <Button
-                onClick={handleRetry}
-                variant="ghost"
-                size="sm"
-                disabled={isRefetching}
-                className="hover-lift"
-              >
-                <RefreshCw className={`w-4 h-4 mr-1 ${isRefetching ? 'animate-spin' : ''}`} />
-                {isRefetching ? 'Refreshing...' : 'Refresh'}
-              </Button> */}
             </div>
           </div>
 
@@ -144,7 +125,7 @@ const Skinrave = () => {
                         wager={data.participants[1].wager}
                         prize={data.participants[1].prize}
                         avatar={data.participants[1].avatar}
-                        coinIcon={skinraveCoin}
+                        coinIcon={gemCoin}
                       />
                     </div>
                   )}
@@ -158,7 +139,7 @@ const Skinrave = () => {
                         wager={data.participants[0].wager}
                         prize={data.participants[0].prize}
                         avatar={data.participants[0].avatar}
-                        coinIcon={skinraveCoin}
+                        coinIcon={gemCoin}
                         isWinner
                       />
                     </div>
@@ -173,7 +154,7 @@ const Skinrave = () => {
                         wager={data.participants[2].wager}
                         prize={data.participants[2].prize}
                         avatar={data.participants[2].avatar}
-                        coinIcon={skinraveCoin}
+                        coinIcon={gemCoin}
                       />
                     </div>
                   )}
@@ -194,7 +175,7 @@ const Skinrave = () => {
                 </div>
               ) : (
                 data && data.participants.length > 3 && (
-                  <LeaderboardTable data={data.participants.slice(3)} startFromRank={4} coinIcon={skinraveCoin} />
+                  <LeaderboardTable data={data.participants.slice(3)} startFromRank={4} coinIcon={gemCoin} />
                 )
               )}
             </div>
@@ -213,4 +194,4 @@ const Skinrave = () => {
   );
 };
 
-export default Skinrave;
+export default Clash;
