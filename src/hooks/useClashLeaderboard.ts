@@ -16,7 +16,7 @@ const fetchLeaderboard = async (): Promise<RainData> => {
   const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
   
   try {
-    const response = await fetch("https://api.wlfyzz.net/radio/rain", {
+    const response = await fetch("https://api.wlfyzz.net/radiobtw/clash", {
       signal: controller.signal,
       headers: {
         'Accept': 'application/json',
