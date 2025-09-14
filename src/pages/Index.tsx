@@ -88,6 +88,14 @@ const Index = () => {
                   />
                 </div>
               )}
+
+              <div className="flex justify-center mb-6">
+                <Button asChild variant="outline" className="hover-lift">
+                  <Link to="/prev-leaderboard/rain">
+                    Previous Leaderboard
+                  </Link>
+                </Button>
+              </div>
             </div>
             
             <div className="flex flex-wrap justify-center items-center gap-4">

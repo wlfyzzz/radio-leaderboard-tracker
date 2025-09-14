@@ -1,24 +1,55 @@
+import { useParams, Link } from "react-router-dom";
 import { PodiumCard } from "@/components/PodiumCard";
 import { LeaderboardTable } from "@/components/LeaderboardTable";
 import { PodiumCardSkeleton, LeaderboardRowSkeleton } from "@/components/EnhancedSkeleton";
 import { NetworkErrorDisplay, ErrorBoundary } from "@/components/ErrorBoundary";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { useSkinraveLeaderboard } from "@/hooks/useSkinraveLeaderboard";
-import { CountdownTimer } from "@/components/CountdownTimer";
-import { RefreshCw, TrendingUp, Users, Clock, Radio, Zap, Sword } from "lucide-react";
-import { Link } from "react-router-dom";
-import skinraveLogo from "@/assets/skinrave.svg";
+import { usePrevLeaderboard } from "@/hooks/usePrevLeaderboard";
+import { ArrowLeft, TrendingUp, Radio, Zap } from "lucide-react";
 import rainLogo from "@/assets/rain.png";
+import skinraveLogo from "@/assets/skinrave.svg";
 import clashLogo from "@/assets/clash.png";
 import skinraveCoin from "@/assets/skinrave-coin.png";
+import gemCoin from "@/assets/gem.svg";
 
-const Skinrave = () => {
-  const { data, isLoading, error, refetch, isRefetching } = useSkinraveLeaderboard();
+const PrevLeaderboard = () => {
+  const { site } = useParams<{ site: string }>();
+  const { data, isLoading, error, refetch } = usePrevLeaderboard(site || "rain");
 
   const handleRetry = () => {
     refetch();
   };
+
+  const getSiteConfig = (siteName: string) => {
+    switch (siteName) {
+      case "skinrave":
+        return {
+          logo: skinraveLogo,
+          title: "Skinrave Previous Leaderboard",
+          coinIcon: skinraveCoin,
+          backUrl: "/skinrave",
+          siteUrl: "https://skinrave.gg/r/radiobtw"
+        };
+      case "clash":
+        return {
+          logo: clashLogo,
+          title: "Clash.gg Previous Leaderboard",
+          coinIcon: gemCoin,
+          backUrl: "/clash",
+          siteUrl: "https://clash.gg/r/radiobtw"
+        };
+      default:
+        return {
+          logo: rainLogo,
+          title: "Rain.gg Previous Leaderboard",
+          coinIcon: undefined,
+          backUrl: "/",
+          siteUrl: "https://rain.gg/r/radiobtw"
+        };
+    }
+  };
+
+  const config = getSiteConfig(site || "rain");
 
   return (
     <ErrorBoundary>
@@ -26,96 +57,56 @@ const Skinrave = () => {
         <div className="container mx-auto px-4 py-8">
           <div className="text-center mb-12 space-y-6 animate-fade-in">
             <div className="space-y-4">
-              {/* Logo Switcher */}
-              <div className="flex justify-center items-center gap-6 mb-8">
+              {/* Back Button */}
+              <div className="flex justify-start mb-6">
+                <Button asChild variant="outline" className="hover-lift">
+                  <Link to={config.backUrl}>
+                    <ArrowLeft className="w-4 h-4 mr-2" />
+                    Back to Current Leaderboard
+                  </Link>
+                </Button>
+              </div>
+
+              {/* Logo */}
+              <div className="flex justify-center items-center mb-8">
                 <div className="relative">
                   <img 
-                    src={skinraveLogo} 
-                    alt="Skinrave" 
-                    className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 border-2 border-gaming-orange rounded-lg shadow-lg" 
+                    src={config.logo} 
+                    alt={config.title} 
+                    className="h-16 w-auto border-2 border-gaming-orange rounded-lg shadow-lg" 
                   />
                   <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
                     <div className="w-2 h-2 bg-gaming-orange rounded-full animate-pulse"></div>
                   </div>
                 </div>
-                <Link to="/">
-                  <img 
-                    src={rainLogo} 
-                    alt="Rain.gg" 
-                    className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
-                  />
-                </Link>
-                <Link to="/clash">
-                  <img 
-                    src={clashLogo} 
-                    alt="Clash.gg" 
-                    className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
-                  />
-                </Link>
               </div>
 
               <div className="flex justify-center items-center gap-3 mb-6">
                 <Radio className="h-8 w-8 text-gaming-orange animate-pulse-glow" />
                 <h1 className="text-4xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent animate-bounce-in">
-                  Skinrave Leaderboard
+                  {config.title}
                 </h1>
                 <Zap className="h-8 w-8 text-gaming-orange animate-pulse-glow" />
               </div>
               
               <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Track the top performers in our Skinrave competition
+                Previous competition results
               </p>
 
               <div className="mb-4 p-4 bg-card border border-border rounded-lg hover-lift">
                 <p className="text-center text-foreground responsive-text">
                   Use code{" "}
                   <a 
-                    href="https://skinrave.gg/r/radiobtw" 
+                    href={config.siteUrl} 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="font-bold text-gaming-orange bg-gaming-orange/10 px-3 py-2 rounded border-2 border-gaming-orange/30 hover:bg-gaming-orange hover:text-gaming-dark transition-all duration-300 underline decoration-2 underline-offset-2 hover-lift"
                   >
                     radiobtw
                   </a>{" "}
-                  to participate
+                  to participate in current competitions
                 </p>
               </div>
-
-              {data?.ends_at && (
-                <div className="flex justify-center mb-6">
-                  <CountdownTimer 
-                    endDate={data.ends_at} 
-                    title="Skinrave Competition Ends in"
-                  />
-                </div>
-              )}
-
-              <div className="flex justify-center mb-6">
-                <Button asChild variant="outline" className="hover-lift">
-                  <Link to="/prev-leaderboard/skinrave">
-                    Previous Leaderboard
-                  </Link>
-                </Button>
-              </div>
-            </div>
-            
-            <div className="flex flex-wrap justify-center items-center gap-4">
-              {/* <Badge variant="secondary" className="text-sm hover-lift bg-gaming-orange/20 text-gaming-orange border-gaming-orange/30">
-                <Clock className="w-4 h-4 mr-1" />
-                Updates every 15 minutes
-              </Badge>
-
-              
-              <Button
-                onClick={handleRetry}
-                variant="ghost"
-                size="sm"
-                disabled={isRefetching}
-                className="hover-lift"
-              >
-                <RefreshCw className={`w-4 h-4 mr-1 ${isRefetching ? 'animate-spin' : ''}`} />
-                {isRefetching ? 'Refreshing...' : 'Refresh'}
-              </Button> */}
             </div>
           </div>
 
@@ -124,7 +115,7 @@ const Skinrave = () => {
             <div className="mb-8">
               <NetworkErrorDisplay 
                 onRetry={handleRetry} 
-                message={error.message || "Failed to load leaderboard data. Please try again."} 
+                message={error.message || "Failed to load previous leaderboard data. Please try again."} 
               />
             </div>
           )}
@@ -133,7 +124,7 @@ const Skinrave = () => {
           <div className="mb-8">
             <div className="flex items-center justify-center mb-6">
               <TrendingUp className="w-6 h-6 mr-2 text-gaming-orange" />
-              <h2 className="text-2xl font-bold">Top Performers</h2>
+              <h2 className="text-2xl font-bold">Final Results</h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 responsive-grid max-w-4xl mx-auto">
@@ -152,7 +143,7 @@ const Skinrave = () => {
                         wager={data.participants[1].wager}
                         prize={data.participants[1].prize}
                         avatar={data.participants[1].avatar}
-                        coinIcon={skinraveCoin}
+                        coinIcon={config.coinIcon}
                       />
                     </div>
                   )}
@@ -166,7 +157,7 @@ const Skinrave = () => {
                         wager={data.participants[0].wager}
                         prize={data.participants[0].prize}
                         avatar={data.participants[0].avatar}
-                        coinIcon={skinraveCoin}
+                        coinIcon={config.coinIcon}
                         isWinner
                       />
                     </div>
@@ -181,7 +172,7 @@ const Skinrave = () => {
                         wager={data.participants[2].wager}
                         prize={data.participants[2].prize}
                         avatar={data.participants[2].avatar}
-                        coinIcon={skinraveCoin}
+                        coinIcon={config.coinIcon}
                       />
                     </div>
                   )}
@@ -192,8 +183,7 @@ const Skinrave = () => {
 
           {/* Remaining Leaderboard */}
           {(isLoading || (data && data.participants.length > 3)) && (
-            <div className="bg-gradient-card  rounded-lg p-6 animate-slide-up hover-lift max-w-6xl mx-auto">
-              
+            <div className="bg-gradient-card rounded-lg p-6 animate-slide-up hover-lift max-w-6xl mx-auto">
               {isLoading ? (
                 <div className="space-y-2">
                   {Array.from({ length: 7 }).map((_, index) => (
@@ -202,7 +192,11 @@ const Skinrave = () => {
                 </div>
               ) : (
                 data && data.participants.length > 3 && (
-                  <LeaderboardTable data={data.participants.slice(3)} startFromRank={4} coinIcon={skinraveCoin} />
+                  <LeaderboardTable 
+                    data={data.participants.slice(3)} 
+                    startFromRank={4} 
+                    coinIcon={config.coinIcon} 
+                  />
                 )
               )}
             </div>
@@ -210,10 +204,9 @@ const Skinrave = () => {
 
           {/* Footer */}
           <div className="text-center mt-12 text-muted-foreground">
-<a href="https://wlfyzz.net" target="_blank" rel="noopener noreferrer" className="text-sm emoji-no-shadow">
-  made with ♥ by wlfyzz.net
-</a>
-
+            <a href="https://wlfyzz.net" target="_blank" rel="noopener noreferrer" className="text-sm">
+              made with ♥ by wlfyzz.net
+            </a>
           </div>
         </div>
       </div>
@@ -221,4 +214,4 @@ const Skinrave = () => {
   );
 };
 
-export default Skinrave;
+export default PrevLeaderboard;

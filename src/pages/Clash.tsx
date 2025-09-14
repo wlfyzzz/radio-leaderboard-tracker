@@ -89,6 +89,14 @@ const Clash = () => {
                   />
                 </div>
               )}
+
+              <div className="flex justify-center mb-6">
+                <Button asChild variant="outline" className="hover-lift">
+                  <Link to="/prev-leaderboard/clash">
+                    Previous Leaderboard
+                  </Link>
+                </Button>
+              </div>
             </div>
           </div>
 
