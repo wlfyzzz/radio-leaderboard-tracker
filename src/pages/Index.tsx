@@ -54,11 +54,9 @@ const Index = () => {
               </div>
 
               <div className="flex justify-center items-center gap-3 mb-6">
-                <Radio className="h-8 w-8 text-gaming-orange animate-pulse-glow" />
                 <h1 className="text-4xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent animate-bounce-in">
                   Rain.gg Leaderboard
                 </h1>
-                <Zap className="h-8 w-8 text-gaming-orange animate-pulse-glow" />
               </div>
               
               <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">

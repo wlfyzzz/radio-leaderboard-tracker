@@ -116,11 +116,9 @@ const PrevLeaderboard = () => {
               </div>
 
               <div className="flex justify-center items-center gap-3 mb-6">
-                <Radio className="h-8 w-8 text-gaming-orange animate-pulse-glow" />
                 <h1 className="text-4xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent animate-bounce-in">
                   {config.title}
                 </h1>
-                <Zap className="h-8 w-8 text-gaming-orange animate-pulse-glow" />
               </div>
               
               <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -154,69 +152,88 @@ const PrevLeaderboard = () => {
             </div>
           )}
 
+          {/* No Data State */}
+          {!isLoading && !error && data && data.participants.length === 0 && (
+            <div className="text-center py-12">
+              <div className="bg-card border border-border rounded-lg p-8 hover-lift max-w-2xl mx-auto">
+                <h3 className="text-2xl font-bold mb-4">No Previous Data Available</h3>
+                <p className="text-muted-foreground text-lg">
+                  No previous leaderboard data is available for this site yet.
+                </p>
+                <Button asChild className="mt-6" variant="outline">
+                  <Link to={config.backUrl}>
+                    View Current Leaderboard
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          )}
+
           {/* Top 3 Podium */}
-          <div className="mb-8">
-            <div className="flex items-center justify-center mb-6">
-              <TrendingUp className="w-6 h-6 mr-2 text-gaming-orange" />
-              <h2 className="text-2xl font-bold">Final Results</h2>
+          {!isLoading && !error && data && data.participants.length > 0 && (
+            <div className="mb-8">
+              <div className="flex items-center justify-center mb-6">
+                <TrendingUp className="w-6 h-6 mr-2 text-gaming-orange" />
+                <h2 className="text-2xl font-bold">Final Results</h2>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 responsive-grid max-w-4xl mx-auto">
+                {isLoading ? (
+                  Array.from({ length: 3 }).map((_, index) => (
+                    <PodiumCardSkeleton key={index} />
+                  ))
+                ) : (
+                  <>
+                    {/* Second Place */}
+                    {data?.participants?.[1] && (
+                      <div className="md:order-1">
+                        <PodiumCard
+                          rank={2}
+                          name={data.participants[1].name}
+                          wager={data.participants[1].wager}
+                          prize={data.participants[1].prize}
+                          avatar={data.participants[1].avatar}
+                          coinIcon={config.coinIcon}
+                        />
+                      </div>
+                    )}
+                    
+                    {/* First Place */}
+                    {data?.participants?.[0] && (
+                      <div className="md:order-2">
+                        <PodiumCard
+                          rank={1}
+                          name={data.participants[0].name}
+                          wager={data.participants[0].wager}
+                          prize={data.participants[0].prize}
+                          avatar={data.participants[0].avatar}
+                          coinIcon={config.coinIcon}
+                          isWinner
+                        />
+                      </div>
+                    )}
+                    
+                    {/* Third Place */}
+                    {data?.participants?.[2] && (
+                      <div className="md:order-3">
+                        <PodiumCard
+                          rank={3}
+                          name={data.participants[2].name}
+                          wager={data.participants[2].wager}
+                          prize={data.participants[2].prize}
+                          avatar={data.participants[2].avatar}
+                          coinIcon={config.coinIcon}
+                        />
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 responsive-grid max-w-4xl mx-auto">
-              {isLoading ? (
-                Array.from({ length: 3 }).map((_, index) => (
-                  <PodiumCardSkeleton key={index} />
-                ))
-              ) : (
-                <>
-                  {/* Second Place */}
-                  {data?.participants?.[1] && (
-                    <div className="md:order-1">
-                      <PodiumCard
-                        rank={2}
-                        name={data.participants[1].name}
-                        wager={data.participants[1].wager}
-                        prize={data.participants[1].prize}
-                        avatar={data.participants[1].avatar}
-                        coinIcon={config.coinIcon}
-                      />
-                    </div>
-                  )}
-                  
-                  {/* First Place */}
-                  {data?.participants?.[0] && (
-                    <div className="md:order-2">
-                      <PodiumCard
-                        rank={1}
-                        name={data.participants[0].name}
-                        wager={data.participants[0].wager}
-                        prize={data.participants[0].prize}
-                        avatar={data.participants[0].avatar}
-                        coinIcon={config.coinIcon}
-                        isWinner
-                      />
-                    </div>
-                  )}
-                  
-                  {/* Third Place */}
-                  {data?.participants?.[2] && (
-                    <div className="md:order-3">
-                      <PodiumCard
-                        rank={3}
-                        name={data.participants[2].name}
-                        wager={data.participants[2].wager}
-                        prize={data.participants[2].prize}
-                        avatar={data.participants[2].avatar}
-                        coinIcon={config.coinIcon}
-                      />
-                    </div>
-                  )}
-                </>
-              )}
-            </div>
-          </div>
+          )}
 
           {/* Remaining Leaderboard */}
-          {(isLoading || (data && data.participants.length > 3)) && (
+          {!isLoading && !error && data && data.participants.length > 3 && (
             <div className="bg-gradient-card rounded-lg p-6 animate-slide-up hover-lift max-w-6xl mx-auto">
               {isLoading ? (
                 <div className="space-y-2">
@@ -225,13 +242,11 @@ const PrevLeaderboard = () => {
                   ))}
                 </div>
               ) : (
-                data && data.participants.length > 3 && (
-                  <LeaderboardTable 
-                    data={data.participants.slice(3)} 
-                    startFromRank={4} 
-                    coinIcon={config.coinIcon} 
-                  />
-                )
+                <LeaderboardTable 
+                  data={data.participants.slice(3)} 
+                  startFromRank={4} 
+                  coinIcon={config.coinIcon} 
+                />
               )}
             </div>
           )}
