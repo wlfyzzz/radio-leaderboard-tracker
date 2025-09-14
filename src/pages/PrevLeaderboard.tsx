@@ -67,17 +67,51 @@ const PrevLeaderboard = () => {
                 </Button>
               </div>
 
-              {/* Logo */}
-              <div className="flex justify-center items-center mb-8">
-                <div className="relative">
-                  <img 
-                    src={config.logo} 
-                    alt={config.title} 
-                    className="h-16 w-auto border-2 border-gaming-orange rounded-lg shadow-lg" 
-                  />
-                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
-                    <div className="w-2 h-2 bg-gaming-orange rounded-full animate-pulse"></div>
-                  </div>
+              {/* Logo Switcher */}
+              <div className="flex justify-center items-center gap-6 mb-8">
+                <div className={`relative ${site === "rain" ? "border-2 border-gaming-orange" : "opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50"}`}>
+                  <Link to="/prev-leaderboard/rain">
+                    <img 
+                      src={rainLogo} 
+                      alt="Rain.gg Previous" 
+                      className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 rounded-lg shadow-lg" 
+                    />
+                  </Link>
+                  {site === "rain" && (
+                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
+                      <div className="w-2 h-2 bg-gaming-orange rounded-full animate-pulse"></div>
+                    </div>
+                  )}
+                </div>
+                
+                <div className={`relative ${site === "skinrave" ? "border-2 border-gaming-orange" : "opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50"}`}>
+                  <Link to="/prev-leaderboard/skinrave">
+                    <img 
+                      src={skinraveLogo} 
+                      alt="Skinrave Previous" 
+                      className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 rounded-lg" 
+                    />
+                  </Link>
+                  {site === "skinrave" && (
+                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
+                      <div className="w-2 h-2 bg-gaming-orange rounded-full animate-pulse"></div>
+                    </div>
+                  )}
+                </div>
+                
+                <div className={`relative ${site === "clash" ? "border-2 border-gaming-orange" : "opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50"}`}>
+                  <Link to="/prev-leaderboard/clash">
+                    <img 
+                      src={clashLogo} 
+                      alt="Clash.gg Previous" 
+                      className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 rounded-lg shadow-lg" 
+                    />
+                  </Link>
+                  {site === "clash" && (
+                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
+                      <div className="w-2 h-2 bg-gaming-orange rounded-full animate-pulse"></div>
+                    </div>
+                  )}
                 </div>
               </div>
 
