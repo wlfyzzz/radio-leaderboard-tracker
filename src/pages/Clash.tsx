@@ -6,7 +6,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useClashLeaderboard } from "@/hooks/useClashLeaderboard";
 import { CountdownTimer } from "@/components/CountdownTimer";
-import { useMeta } from "@/hooks/useMeta";
 import { RefreshCw, TrendingUp, Users, Clock, Radio, Zap, Sword } from "lucide-react";
 import { Link } from "react-router-dom";
 import clashLogo from "@/assets/clash.png";
@@ -16,13 +15,6 @@ import gemCoin from "@/assets/gem.svg";
 
 const Clash = () => {
   const { data, isLoading, error, refetch, isRefetching } = useClashLeaderboard();
-
-  useMeta({
-    title: "Clash.gg Leaderboard - RadioBTW",
-    description: "Track the top performers in our Clash.gg competition. Use code radiobtw to participate!",
-    image: "https://ss.wlfyzz.dev/snapshot?url=https://radiobtw.com/clash&scroll=550",
-    url: "https://radiobtw.com/clash"
-  });
 
   const handleRetry = () => {
     refetch();
