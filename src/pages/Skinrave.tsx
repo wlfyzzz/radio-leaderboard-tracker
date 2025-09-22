@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useSkinraveLeaderboard } from "@/hooks/useSkinraveLeaderboard";
 import { CountdownTimer } from "@/components/CountdownTimer";
+import { useMeta } from "@/hooks/useMeta";
 import { RefreshCw, TrendingUp, Users, Clock, Radio, Zap, Sword } from "lucide-react";
 import { Link } from "react-router-dom";
 import skinraveLogo from "@/assets/skinrave.svg";
@@ -15,6 +16,13 @@ import skinraveCoin from "@/assets/skinrave-coin.png";
 
 const Skinrave = () => {
   const { data, isLoading, error, refetch, isRefetching } = useSkinraveLeaderboard();
+
+  useMeta({
+    title: "Skinrave Leaderboard - RadioBTW",
+    description: "Track the top performers in our Skinrave competition. Use code radiobtw to participate!",
+    image: "https://ss.wlfyzz.dev/snapshot?url=https://radiobtw.com&scroll=550",
+    url: "https://radiobtw.com"
+  });
 
   const handleRetry = () => {
     refetch();
