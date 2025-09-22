@@ -38,13 +38,6 @@ const Skinrave = () => {
                     <div className="w-2 h-2 bg-gaming-orange rounded-full animate-pulse"></div>
                   </div>
                 </div>
-                <Link to="/">
-                  <img 
-                    src={rainLogo} 
-                    alt="Rain.gg" 
-                    className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
-                  />
-                </Link>
                 <Link to="/clash">
                   <img 
                     src={clashLogo} 

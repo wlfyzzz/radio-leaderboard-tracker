@@ -14,7 +14,7 @@ import gemCoin from "@/assets/gem.svg";
 
 const PrevLeaderboard = () => {
   const { site } = useParams<{ site: string }>();
-  const { data, isLoading, error, refetch } = usePrevLeaderboard(site || "rain");
+  const { data, isLoading, error, refetch } = usePrevLeaderboard(site || "skinrave");
 
   const handleRetry = () => {
     refetch();
@@ -22,14 +22,6 @@ const PrevLeaderboard = () => {
 
   const getSiteConfig = (siteName: string) => {
     switch (siteName) {
-      case "skinrave":
-        return {
-          logo: skinraveLogo,
-          title: "Skinrave Previous Leaderboard",
-          coinIcon: skinraveCoin,
-          backUrl: "/skinrave",
-          siteUrl: "https://skinrave.gg/r/radiobtw"
-        };
       case "clash":
         return {
           logo: clashLogo,
@@ -40,16 +32,16 @@ const PrevLeaderboard = () => {
         };
       default:
         return {
-          logo: rainLogo,
-          title: "Rain.gg Previous Leaderboard",
-          coinIcon: undefined,
+          logo: skinraveLogo,
+          title: "Skinrave Previous Leaderboard",
+          coinIcon: skinraveCoin,
           backUrl: "/",
-          siteUrl: "https://rain.gg/r/radiobtw"
+          siteUrl: "https://skinrave.gg/r/radiobtw"
         };
     }
   };
 
-  const config = getSiteConfig(site || "rain");
+  const config = getSiteConfig(site || "skinrave");
 
   return (
     <ErrorBoundary>
@@ -69,30 +61,15 @@ const PrevLeaderboard = () => {
 
               {/* Logo Switcher */}
               <div className="flex justify-center items-center gap-6 mb-8">
-                <div className={`relative ${site === "rain" ? "border-2 border-gaming-orange" : "opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50"}`}>
-                  <Link to="/prev-leaderboard/rain">
-                    <img 
-                      src={rainLogo} 
-                      alt="Rain.gg Previous" 
-                      className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 rounded-lg shadow-lg" 
-                    />
-                  </Link>
-                  {site === "rain" && (
-                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
-                      <div className="w-2 h-2 bg-gaming-orange rounded-full animate-pulse"></div>
-                    </div>
-                  )}
-                </div>
-                
-                <div className={`relative ${site === "skinrave" ? "border-2 border-gaming-orange" : "opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50"}`}>
+                <div className={`relative ${site === "skinrave" || !site ? "border-2 border-gaming-orange" : "opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50"}`}>
                   <Link to="/prev-leaderboard/skinrave">
                     <img 
                       src={skinraveLogo} 
                       alt="Skinrave Previous" 
-                      className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 rounded-lg" 
+                      className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 rounded-lg shadow-lg" 
                     />
                   </Link>
-                  {site === "skinrave" && (
+                  {(site === "skinrave" || !site) && (
                     <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
                       <div className="w-2 h-2 bg-gaming-orange rounded-full animate-pulse"></div>
                     </div>
