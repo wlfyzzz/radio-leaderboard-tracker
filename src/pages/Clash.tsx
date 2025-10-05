@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import clashLogo from "@/assets/clash.png";
 import rainLogo from "@/assets/rain.png";
 import skinraveLogo from "@/assets/skinrave.svg";
+import csgoldLogo from "@/assets/csgold.svg";
 import gemCoin from "@/assets/gem.svg";
 
 const Clash = () => {
@@ -28,6 +29,13 @@ const Clash = () => {
             <div className="space-y-4">
               {/* Logo Switcher */}
               <div className="flex justify-center items-center gap-6 mb-8">
+                <Link to="/">
+                  <img 
+                    src={skinraveLogo} 
+                    alt="Skinrave" 
+                    className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
+                  />
+                </Link>
                 <div className="relative">
                   <img 
                     src={clashLogo} 
@@ -38,10 +46,10 @@ const Clash = () => {
                     <div className="w-2 h-2 bg-gaming-orange rounded-full animate-pulse"></div>
                   </div>
                 </div>
-                <Link to="/">
+                <Link to="/csgold">
                   <img 
-                    src={skinraveLogo} 
-                    alt="Skinrave" 
+                    src={csgoldLogo} 
+                    alt="CSGold" 
                     className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
                   />
                 </Link>

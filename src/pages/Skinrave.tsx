@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import skinraveLogo from "@/assets/skinrave.svg";
 import rainLogo from "@/assets/rain.png";
 import clashLogo from "@/assets/clash.png";
+import csgoldLogo from "@/assets/csgold.svg";
 import skinraveCoin from "@/assets/skinrave-coin.png";
 
 const Skinrave = () => {
@@ -42,6 +43,13 @@ const Skinrave = () => {
                   <img 
                     src={clashLogo} 
                     alt="Clash.gg" 
+                    className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
+                  />
+                </Link>
+                <Link to="/csgold">
+                  <img 
+                    src={csgoldLogo} 
+                    alt="CSGold" 
                     className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
                   />
                 </Link>
