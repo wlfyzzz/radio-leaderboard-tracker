@@ -9,8 +9,10 @@ import { ArrowLeft, TrendingUp, Radio, Zap } from "lucide-react";
 import rainLogo from "@/assets/rain.png";
 import skinraveLogo from "@/assets/skinrave.svg";
 import clashLogo from "@/assets/clash.png";
+import csgoldLogo from "@/assets/csgold.svg";
 import skinraveCoin from "@/assets/skinrave-coin.png";
 import gemCoin from "@/assets/gem.svg";
+import csgoldCoin from "@/assets/csgold-coin.png";
 
 const PrevLeaderboard = () => {
   const { site } = useParams<{ site: string }>();
@@ -29,6 +31,14 @@ const PrevLeaderboard = () => {
           coinIcon: gemCoin,
           backUrl: "/clash",
           siteUrl: "https://clash.gg/r/radiobtw"
+        };
+      case "csgold":
+        return {
+          logo: csgoldLogo,
+          title: "CSGold Previous Leaderboard",
+          coinIcon: csgoldCoin,
+          backUrl: "/csgold",
+          siteUrl: "https://csgold.gg/r/radiobtw"
         };
       default:
         return {
@@ -85,6 +95,21 @@ const PrevLeaderboard = () => {
                     />
                   </Link>
                   {site === "clash" && (
+                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
+                      <div className="w-2 h-2 bg-gaming-orange rounded-full animate-pulse"></div>
+                    </div>
+                  )}
+                </div>
+
+                <div className={`relative ${site === "csgold" ? "border-2 border-gaming-orange" : "opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50"}`}>
+                  <Link to="/prev-leaderboard/csgold">
+                    <img 
+                      src={csgoldLogo} 
+                      alt="CSGold Previous" 
+                      className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 rounded-lg shadow-lg" 
+                    />
+                  </Link>
+                  {site === "csgold" && (
                     <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
                       <div className="w-2 h-2 bg-gaming-orange rounded-full animate-pulse"></div>
                     </div>
