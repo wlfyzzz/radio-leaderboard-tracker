@@ -8,7 +8,7 @@ import { CountdownTimer } from "@/components/CountdownTimer";
 import { RefreshCw, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import csgoldLogo from "@/assets/csgold.svg";
-import csgoldCoin from "@/assets/csgold-coin.png";
+import csgoldCoin from "@/assets/csgold-coin.svg";
 import skinraveLogo from "@/assets/skinrave.svg";
 import clashLogo from "@/assets/clash.png";
 

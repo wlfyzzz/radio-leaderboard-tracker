@@ -12,7 +12,7 @@ import clashLogo from "@/assets/clash.png";
 import csgoldLogo from "@/assets/csgold.svg";
 import skinraveCoin from "@/assets/skinrave-coin.png";
 import gemCoin from "@/assets/gem.svg";
-import csgoldCoin from "@/assets/csgold-coin.png";
+import csgoldCoin from "@/assets/csgold-coin.svg";
 
 const PrevLeaderboard = () => {
   const { site } = useParams<{ site: string }>();
