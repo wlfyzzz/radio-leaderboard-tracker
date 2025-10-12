@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 import skinraveLogo from "@/assets/skinrave.svg";
 import clashLogo from "@/assets/clash.png";
 import csgoldLogo from "@/assets/csgold.svg";
+import csgowinLogo from "@/assets/csgowin.png";
+import csgowinCoin from "@/assets/csgowin-coin.png";
 
 const Csgowin = () => {
   const { data, isLoading, error, refetch } = useCsgowinLeaderboard();
@@ -48,9 +50,11 @@ const Csgowin = () => {
                   />
                 </Link>
                 <div className="relative">
-                  <div className="h-12 md:h-16 px-6 flex items-center justify-center cursor-pointer hover-lift transition-all duration-300 border-2 border-gaming-orange rounded-lg shadow-lg bg-gaming-orange/10">
-                    <span className="text-lg md:text-xl font-bold text-gaming-orange">CSGOWin</span>
-                  </div>
+                  <img 
+                    src={csgowinLogo} 
+                    alt="CSGOWin" 
+                    className="h-12 md:h-16 w-auto cursor-pointer hover-lift transition-all duration-300 border-2 border-gaming-orange rounded-lg shadow-lg" 
+                  />
                   <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
                     <div className="w-2 h-2 bg-gaming-orange rounded-full animate-pulse"></div>
                   </div>
@@ -134,6 +138,7 @@ const Csgowin = () => {
                         wager={data.participants[1].wager.toString()}
                         prize={data.participants[1].prize.toString()}
                         avatar={data.participants[1].avatar}
+                        coinIcon={csgowinCoin}
                       />
                     </div>
                   )}
@@ -147,6 +152,7 @@ const Csgowin = () => {
                         wager={data.participants[0].wager.toString()}
                         prize={data.participants[0].prize.toString()}
                         avatar={data.participants[0].avatar}
+                        coinIcon={csgowinCoin}
                         isWinner
                       />
                     </div>
@@ -161,6 +167,7 @@ const Csgowin = () => {
                         wager={data.participants[2].wager.toString()}
                         prize={data.participants[2].prize.toString()}
                         avatar={data.participants[2].avatar}
+                        coinIcon={csgowinCoin}
                       />
                     </div>
                   )}
@@ -186,7 +193,8 @@ const Csgowin = () => {
                       wager: p.wager.toString(),
                       prize: p.prize.toString()
                     }))} 
-                    startFromRank={4} 
+                    startFromRank={4}
+                    coinIcon={csgowinCoin}
                   />
                 )
               )}

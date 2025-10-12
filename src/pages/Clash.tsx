@@ -12,6 +12,7 @@ import clashLogo from "@/assets/clash.png";
 import rainLogo from "@/assets/rain.png";
 import skinraveLogo from "@/assets/skinrave.svg";
 import csgoldLogo from "@/assets/csgold.svg";
+import csgowinLogo from "@/assets/csgowin.png";
 import gemCoin from "@/assets/gem.svg";
 
 const Clash = () => {
@@ -54,9 +55,11 @@ const Clash = () => {
                   />
                 </Link>
                 <Link to="/csgowin">
-                  <div className="h-12 md:h-16 px-4 md:px-6 flex items-center justify-center cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg bg-gaming-orange/5">
-                    <span className="text-base md:text-lg font-bold text-gaming-orange">CSGOWin</span>
-                  </div>
+                  <img 
+                    src={csgowinLogo} 
+                    alt="CSGOWin" 
+                    className="h-12 md:h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
+                  />
                 </Link>
               </div>
 

@@ -10,9 +10,11 @@ import rainLogo from "@/assets/rain.png";
 import skinraveLogo from "@/assets/skinrave.svg";
 import clashLogo from "@/assets/clash.png";
 import csgoldLogo from "@/assets/csgold.svg";
+import csgowinLogo from "@/assets/csgowin.png";
 import skinraveCoin from "@/assets/skinrave-coin.png";
 import gemCoin from "@/assets/gem.svg";
 import csgoldCoin from "@/assets/csgold-coin.svg";
+import csgowinCoin from "@/assets/csgowin-coin.png";
 
 const PrevLeaderboard = () => {
   const { site } = useParams<{ site: string }>();
@@ -42,9 +44,9 @@ const PrevLeaderboard = () => {
         };
       case "csgowin":
         return {
-          logo: null,
+          logo: csgowinLogo,
           title: "CSGOWin Previous Leaderboard",
-          coinIcon: gemCoin,
+          coinIcon: csgowinCoin,
           backUrl: "/csgowin",
           siteUrl: "https://csgowin.com/r/radiobtw"
         };
@@ -126,9 +128,11 @@ const PrevLeaderboard = () => {
 
                 <div className={`relative ${site === "csgowin" ? "border-2 border-gaming-orange" : "opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50"}`}>
                   <Link to="/prev-leaderboard/csgowin">
-                    <div className="h-12 md:h-16 px-4 md:px-6 flex items-center justify-center cursor-pointer hover-lift transition-all duration-300 rounded-lg shadow-lg bg-gaming-orange/10">
-                      <span className="text-base md:text-lg font-bold text-gaming-orange">CSGOWin</span>
-                    </div>
+                    <img 
+                      src={csgowinLogo} 
+                      alt="CSGOWin Previous" 
+                      className="h-12 md:h-16 w-auto cursor-pointer hover-lift transition-all duration-300 rounded-lg shadow-lg" 
+                    />
                   </Link>
                   {site === "csgowin" && (
                     <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
