@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Skinrave from "./pages/Skinrave";
 import Clash from "./pages/Clash";
 import Csgold from "./pages/Csgold";
+import Csgowin from "./pages/Csgowin";
 import PrevLeaderboard from "./pages/PrevLeaderboard";
 import NotFound from "./pages/NotFound";
 
@@ -21,6 +22,7 @@ const App = () => (
           <Route path="/" element={<Skinrave />} />
           <Route path="/clash" element={<Clash />} />
           <Route path="/csgold" element={<Csgold />} />
+          <Route path="/csgowin" element={<Csgowin />} />
           <Route path="/prev-leaderboard/:site" element={<PrevLeaderboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

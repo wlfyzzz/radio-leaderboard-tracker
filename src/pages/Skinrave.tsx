@@ -28,12 +28,12 @@ const Skinrave = () => {
           <div className="text-center mb-12 space-y-6 animate-fade-in">
             <div className="space-y-4">
               {/* Logo Switcher */}
-              <div className="flex justify-center items-center gap-6 mb-8">
+              <div className="flex justify-center items-center gap-3 md:gap-6 mb-8 flex-wrap">
                 <div className="relative">
                   <img 
                     src={skinraveLogo} 
                     alt="Skinrave" 
-                    className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 border-2 border-gaming-orange rounded-lg shadow-lg" 
+                    className="h-12 md:h-16 w-auto cursor-pointer hover-lift transition-all duration-300 border-2 border-gaming-orange rounded-lg shadow-lg" 
                   />
                   <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
                     <div className="w-2 h-2 bg-gaming-orange rounded-full animate-pulse"></div>
@@ -43,15 +43,20 @@ const Skinrave = () => {
                   <img 
                     src={clashLogo} 
                     alt="Clash.gg" 
-                    className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
+                    className="h-12 md:h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
                   />
                 </Link>
                 <Link to="/csgold">
                   <img 
                     src={csgoldLogo} 
                     alt="CSGold" 
-                    className="h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
+                    className="h-12 md:h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
                   />
+                </Link>
+                <Link to="/csgowin">
+                  <div className="h-12 md:h-16 px-4 md:px-6 flex items-center justify-center cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg bg-gaming-orange/5">
+                    <span className="text-base md:text-lg font-bold text-gaming-orange">CSGOWin</span>
+                  </div>
                 </Link>
               </div>
 

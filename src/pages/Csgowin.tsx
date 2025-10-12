@@ -3,17 +3,16 @@ import { LeaderboardTable } from "@/components/LeaderboardTable";
 import { PodiumCardSkeleton, LeaderboardRowSkeleton } from "@/components/EnhancedSkeleton";
 import { NetworkErrorDisplay, ErrorBoundary } from "@/components/ErrorBoundary";
 import { Button } from "@/components/ui/button";
-import { useCsgoldLeaderboard } from "@/hooks/useCsgoldLeaderboard";
+import { useCsgowinLeaderboard } from "@/hooks/useCsgowinLeaderboard";
 import { CountdownTimer } from "@/components/CountdownTimer";
-import { RefreshCw, TrendingUp } from "lucide-react";
+import { TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
-import csgoldLogo from "@/assets/csgold.svg";
-import csgoldCoin from "@/assets/csgold-coin.svg";
 import skinraveLogo from "@/assets/skinrave.svg";
 import clashLogo from "@/assets/clash.png";
+import csgoldLogo from "@/assets/csgold.svg";
 
-const Csgold = () => {
-  const { data, isLoading, error, refetch, isRefetching } = useCsgoldLeaderboard();
+const Csgowin = () => {
+  const { data, isLoading, error, refetch } = useCsgowinLeaderboard();
 
   const handleRetry = () => {
     refetch();
@@ -41,38 +40,38 @@ const Csgold = () => {
                     className="h-12 md:h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
                   />
                 </Link>
-                <div className="relative">
+                <Link to="/csgold">
                   <img 
                     src={csgoldLogo} 
                     alt="CSGold" 
-                    className="h-12 md:h-16 w-auto cursor-pointer hover-lift transition-all duration-300 border-2 border-gaming-orange rounded-lg shadow-lg" 
+                    className="h-12 md:h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
                   />
+                </Link>
+                <div className="relative">
+                  <div className="h-12 md:h-16 px-6 flex items-center justify-center cursor-pointer hover-lift transition-all duration-300 border-2 border-gaming-orange rounded-lg shadow-lg bg-gaming-orange/10">
+                    <span className="text-lg md:text-xl font-bold text-gaming-orange">CSGOWin</span>
+                  </div>
                   <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
                     <div className="w-2 h-2 bg-gaming-orange rounded-full animate-pulse"></div>
                   </div>
                 </div>
-                <Link to="/csgowin">
-                  <div className="h-12 md:h-16 px-4 md:px-6 flex items-center justify-center cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg bg-gaming-orange/5">
-                    <span className="text-base md:text-lg font-bold text-gaming-orange">CSGOWin</span>
-                  </div>
-                </Link>
               </div>
 
               <div className="flex justify-center items-center gap-3 mb-6">
                 <h1 className="text-4xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent animate-bounce-in">
-                  CSGold Leaderboard
+                  CSGOWin Leaderboard
                 </h1>
               </div>
               
               <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Track the top performers in our CSGold competition
+                Track the top performers in our CSGOWin competition
               </p>
 
               <div className="mb-4 p-4 bg-card border border-border rounded-lg hover-lift">
                 <p className="text-center text-foreground responsive-text">
                   Use code{" "}
                   <a 
-                    href="https://csgold.gg/r/radiobtw" 
+                    href="https://csgowin.com/r/radiobtw" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="font-bold text-gaming-orange bg-gaming-orange/10 px-3 py-2 rounded border-2 border-gaming-orange/30 hover:bg-gaming-orange hover:text-gaming-dark transition-all duration-300 underline decoration-2 underline-offset-2 hover-lift"
@@ -87,14 +86,14 @@ const Csgold = () => {
                 <div className="flex justify-center mb-6">
                   <CountdownTimer 
                     endDate={data.ends_at} 
-                    title="CSGold Competition Ends in"
+                    title="CSGOWin Competition Ends in"
                   />
                 </div>
               )}
 
               <div className="flex justify-center mb-6">
                 <Button asChild variant="outline" className="hover-lift">
-                  <Link to="/prev-leaderboard/csgold">
+                  <Link to="/prev-leaderboard/csgowin">
                     Previous Leaderboard
                   </Link>
                 </Button>
@@ -132,10 +131,9 @@ const Csgold = () => {
                       <PodiumCard
                         rank={2}
                         name={data.participants[1].name}
-                        wager={data.participants[1].wager}
-                        prize={data.participants[1].prize}
+                        wager={data.participants[1].wager.toString()}
+                        prize={data.participants[1].prize.toString()}
                         avatar={data.participants[1].avatar}
-                        coinIcon={csgoldCoin}
                       />
                     </div>
                   )}
@@ -146,10 +144,9 @@ const Csgold = () => {
                       <PodiumCard
                         rank={1}
                         name={data.participants[0].name}
-                        wager={data.participants[0].wager}
-                        prize={data.participants[0].prize}
+                        wager={data.participants[0].wager.toString()}
+                        prize={data.participants[0].prize.toString()}
                         avatar={data.participants[0].avatar}
-                        coinIcon={csgoldCoin}
                         isWinner
                       />
                     </div>
@@ -161,10 +158,9 @@ const Csgold = () => {
                       <PodiumCard
                         rank={3}
                         name={data.participants[2].name}
-                        wager={data.participants[2].wager}
-                        prize={data.participants[2].prize}
+                        wager={data.participants[2].wager.toString()}
+                        prize={data.participants[2].prize.toString()}
                         avatar={data.participants[2].avatar}
-                        coinIcon={csgoldCoin}
                       />
                     </div>
                   )}
@@ -184,7 +180,14 @@ const Csgold = () => {
                 </div>
               ) : (
                 data && data.participants.length > 3 && (
-                  <LeaderboardTable data={data.participants.slice(3)} startFromRank={4} coinIcon={csgoldCoin} />
+                  <LeaderboardTable 
+                    data={data.participants.slice(3).map(p => ({
+                      ...p,
+                      wager: p.wager.toString(),
+                      prize: p.prize.toString()
+                    }))} 
+                    startFromRank={4} 
+                  />
                 )
               )}
             </div>
@@ -202,4 +205,4 @@ const Csgold = () => {
   );
 };
 
-export default Csgold;
+export default Csgowin;
