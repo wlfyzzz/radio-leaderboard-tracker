@@ -82,7 +82,7 @@ export const PodiumCard = ({ rank, name, wager, prize, avatar, isWinner, coinIco
               Wagered
             </div>
             <div className="text-2xl font-extrabold text-gaming-orange">
-              ${parseFloat(wager).toLocaleString(undefined, { 
+              {parseFloat(wager).toLocaleString(undefined, { 
                 minimumFractionDigits: 2, 
                 maximumFractionDigits: 2 
               })}

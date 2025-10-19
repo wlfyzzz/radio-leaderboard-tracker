@@ -39,9 +39,6 @@ const Skinrave = () => {
                     alt="Skinrave" 
                     className="h-14 md:h-20 w-auto cursor-pointer transition-all duration-300 border-3 border-gaming-orange rounded-xl shadow-glow p-2 bg-gaming-card/80 backdrop-blur-sm" 
                   />
-                  <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
-                    <div className="w-2.5 h-2.5 bg-gaming-orange rounded-full animate-pulse shadow-glow"></div>
-                  </div>
                 </div>
                 <Link to="/clash" className="group">
                   <img 

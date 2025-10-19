@@ -76,7 +76,7 @@ export const LeaderboardTable = ({ data, startFromRank = 4, coinIcon = "https://
                   </Badge>
                 </TableCell>
                 <TableCell className="text-right font-mono font-bold text-base text-foreground py-5">
-                  ${parseFloat(entry.wager).toLocaleString(undefined, { 
+                  {parseFloat(entry.wager).toLocaleString(undefined, { 
                     minimumFractionDigits: 2, 
                     maximumFractionDigits: 2 
                   })}

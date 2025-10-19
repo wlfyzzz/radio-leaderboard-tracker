@@ -65,13 +65,16 @@ const PrevLeaderboard = () => {
 
   return (
     <ErrorBoundary>
-      <div className="min-h-screen bg-background">
-        <div className="container mx-auto px-4 py-8">
-          <div className="text-center mb-12 space-y-6 animate-fade-in">
-            <div className="space-y-4">
+      <div className="min-h-screen bg-background relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 bg-gradient-mesh pointer-events-none opacity-30" />
+        
+        <div className="container mx-auto px-4 py-12 relative z-10">
+          <div className="text-center mb-16 space-y-8 animate-fade-in">
+            <div className="space-y-6">
               {/* Back Button */}
-              <div className="flex justify-start mb-6">
-                <Button asChild variant="outline" className="hover-lift">
+              <div className="flex justify-start mb-8">
+                <Button asChild variant="outline" className="hover-lift border-2 border-gaming-orange/30 hover:border-gaming-orange hover:bg-gaming-orange/10 font-semibold text-base px-6 py-3">
                   <Link to={config.backUrl}>
                     <ArrowLeft className="w-4 h-4 mr-2" />
                     Back to Current Leaderboard
@@ -80,86 +83,74 @@ const PrevLeaderboard = () => {
               </div>
 
               {/* Logo Switcher */}
-              <div className="flex justify-center items-center gap-3 md:gap-6 mb-8 flex-wrap">
-                <div className={`relative ${site === "skinrave" || !site ? "border-2 border-gaming-orange" : "opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50"}`}>
-                  <Link to="/prev-leaderboard/skinrave">
-                    <img 
-                      src={skinraveLogo} 
-                      alt="Skinrave Previous" 
-                      className="h-12 md:h-16 w-auto cursor-pointer hover-lift transition-all duration-300 rounded-lg shadow-lg" 
-                    />
-                  </Link>
-                  {(site === "skinrave" || !site) && (
-                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
-                      <div className="w-2 h-2 bg-gaming-orange rounded-full animate-pulse"></div>
-                    </div>
-                  )}
-                </div>
+              <div className="flex justify-center items-center gap-4 md:gap-8 mb-12 flex-wrap">
+                <Link to="/prev-leaderboard/skinrave" className="group">
+                  <img 
+                    src={skinraveLogo} 
+                    alt="Skinrave Previous" 
+                    className={`h-14 md:h-20 w-auto cursor-pointer transition-all duration-300 rounded-xl p-2 backdrop-blur-sm ${
+                      site === "skinrave" || !site 
+                        ? "border-3 border-gaming-orange shadow-glow bg-gaming-card/80" 
+                        : "border-2 border-transparent hover:border-gaming-orange/30 opacity-50 hover:opacity-100 hover:shadow-lg bg-gaming-card/40 hover:bg-gaming-card/60"
+                    }`}
+                  />
+                </Link>
                 
-                <div className={`relative ${site === "clash" ? "border-2 border-gaming-orange" : "opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50"}`}>
-                  <Link to="/prev-leaderboard/clash">
-                    <img 
-                      src={clashLogo} 
-                      alt="Clash.gg Previous" 
-                      className="h-12 md:h-16 w-auto cursor-pointer hover-lift transition-all duration-300 rounded-lg shadow-lg" 
-                    />
-                  </Link>
-                  {site === "clash" && (
-                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
-                      <div className="w-2 h-2 bg-gaming-orange rounded-full animate-pulse"></div>
-                    </div>
-                  )}
-                </div>
+                <Link to="/prev-leaderboard/clash" className="group">
+                  <img 
+                    src={clashLogo} 
+                    alt="Clash.gg Previous" 
+                    className={`h-14 md:h-20 w-auto cursor-pointer transition-all duration-300 rounded-xl p-2 backdrop-blur-sm ${
+                      site === "clash" 
+                        ? "border-3 border-gaming-orange shadow-glow bg-gaming-card/80" 
+                        : "border-2 border-transparent hover:border-gaming-orange/30 opacity-50 hover:opacity-100 hover:shadow-lg bg-gaming-card/40 hover:bg-gaming-card/60"
+                    }`}
+                  />
+                </Link>
 
-                <div className={`relative ${site === "csgold" ? "border-2 border-gaming-orange" : "opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50"}`}>
-                  <Link to="/prev-leaderboard/csgold">
-                    <img 
-                      src={csgoldLogo} 
-                      alt="CSGold Previous" 
-                      className="h-12 md:h-16 w-auto cursor-pointer hover-lift transition-all duration-300 rounded-lg shadow-lg" 
-                    />
-                  </Link>
-                  {site === "csgold" && (
-                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
-                      <div className="w-2 h-2 bg-gaming-orange rounded-full animate-pulse"></div>
-                    </div>
-                  )}
-                </div>
+                <Link to="/prev-leaderboard/csgold" className="group">
+                  <img 
+                    src={csgoldLogo} 
+                    alt="CSGold Previous" 
+                    className={`h-14 md:h-20 w-auto cursor-pointer transition-all duration-300 rounded-xl p-2 backdrop-blur-sm ${
+                      site === "csgold" 
+                        ? "border-3 border-gaming-orange shadow-glow bg-gaming-card/80" 
+                        : "border-2 border-transparent hover:border-gaming-orange/30 opacity-50 hover:opacity-100 hover:shadow-lg bg-gaming-card/40 hover:bg-gaming-card/60"
+                    }`}
+                  />
+                </Link>
 
-                <div className={`relative ${site === "csgowin" ? "border-2 border-gaming-orange" : "opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50"}`}>
-                  <Link to="/prev-leaderboard/csgowin">
-                    <img 
-                      src={csgowinLogo} 
-                      alt="CSGOWin Previous" 
-                      className="h-12 md:h-16 w-auto cursor-pointer hover-lift transition-all duration-300 rounded-lg shadow-lg" 
-                    />
-                  </Link>
-                  {site === "csgowin" && (
-                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
-                      <div className="w-2 h-2 bg-gaming-orange rounded-full animate-pulse"></div>
-                    </div>
-                  )}
-                </div>
+                <Link to="/prev-leaderboard/csgowin" className="group">
+                  <img 
+                    src={csgowinLogo} 
+                    alt="CSGOWin Previous" 
+                    className={`h-14 md:h-20 w-auto cursor-pointer transition-all duration-300 rounded-xl p-2 backdrop-blur-sm ${
+                      site === "csgowin" 
+                        ? "border-3 border-gaming-orange shadow-glow bg-gaming-card/80" 
+                        : "border-2 border-transparent hover:border-gaming-orange/30 opacity-50 hover:opacity-100 hover:shadow-lg bg-gaming-card/40 hover:bg-gaming-card/60"
+                    }`}
+                  />
+                </Link>
               </div>
 
-              <div className="flex justify-center items-center gap-3 mb-6">
-                <h1 className="text-4xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent animate-bounce-in">
+              <div className="flex justify-center items-center gap-4 mb-8">
+                <h1 className="text-5xl md:text-7xl font-extrabold bg-gradient-primary bg-clip-text text-transparent animate-bounce-in drop-shadow-2xl whitespace-nowrap">
                   {config.title}
                 </h1>
               </div>
               
-              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-medium">
                 Previous competition results
               </p>
 
-              <div className="mb-4 p-4 bg-card border border-border rounded-lg hover-lift">
-                <p className="text-center text-foreground responsive-text">
+              <div className="mb-6 p-6 glass-card rounded-xl hover-lift max-w-2xl mx-auto">
+                <p className="text-center text-foreground text-lg font-medium">
                   Use code{" "}
                   <a 
                     href={config.siteUrl} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="font-bold text-gaming-orange bg-gaming-orange/10 px-3 py-2 rounded border-2 border-gaming-orange/30 hover:bg-gaming-orange hover:text-gaming-dark transition-all duration-300 underline decoration-2 underline-offset-2 hover-lift"
+                    className="font-extrabold text-gaming-orange bg-gaming-orange/15 px-4 py-2.5 rounded-lg border-2 border-gaming-orange/40 hover:bg-gaming-orange hover:text-gaming-dark transition-all duration-300 underline decoration-2 underline-offset-4 hover-lift inline-flex items-center gap-2 shadow-lg"
                   >
                     radiobtw
                   </a>{" "}
@@ -198,10 +189,13 @@ const PrevLeaderboard = () => {
 
           {/* Top 3 Podium */}
           {!isLoading && !error && data && data.participants.length > 0 && (
-            <div className="mb-8">
-              <div className="flex items-center justify-center mb-6">
-                <TrendingUp className="w-6 h-6 mr-2 text-gaming-orange" />
-                <h2 className="text-2xl font-bold">Final Results</h2>
+            <div className="mb-16">
+              <div className="flex items-center justify-center mb-10 gap-3">
+                <div className="h-1 w-12 bg-gradient-primary rounded-full"></div>
+                <TrendingUp className="w-7 h-7 text-gaming-orange" />
+                <h2 className="text-3xl md:text-4xl font-extrabold bg-gradient-primary bg-clip-text text-transparent">Final Results</h2>
+                <TrendingUp className="w-7 h-7 text-gaming-orange" />
+                <div className="h-1 w-12 bg-gradient-primary rounded-full"></div>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 responsive-grid max-w-4xl mx-auto">
@@ -261,26 +255,23 @@ const PrevLeaderboard = () => {
 
           {/* Remaining Leaderboard */}
           {!isLoading && !error && data && data.participants.length > 3 && (
-            <div className="bg-gradient-card rounded-lg p-6 animate-slide-up hover-lift max-w-6xl mx-auto">
-              {isLoading ? (
-                <div className="space-y-2">
-                  {Array.from({ length: 7 }).map((_, index) => (
-                    <LeaderboardRowSkeleton key={index} />
-                  ))}
-                </div>
-              ) : (
-                <LeaderboardTable 
-                  data={data.participants.slice(3)} 
-                  startFromRank={4} 
-                  coinIcon={config.coinIcon} 
-                />
-              )}
+            <div className="animate-slide-up max-w-6xl mx-auto">
+              <LeaderboardTable 
+                data={data.participants.slice(3)} 
+                startFromRank={4} 
+                coinIcon={config.coinIcon} 
+              />
             </div>
           )}
 
           {/* Footer */}
-          <div className="text-center mt-12 text-muted-foreground">
-            <a href="https://wlfyzz.net" target="_blank" rel="noopener noreferrer" className="text-sm">
+          <div className="text-center mt-20 text-muted-foreground pb-8">
+            <a 
+              href="https://wlfyzz.net" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-base emoji-no-shadow hover:text-gaming-orange transition-colors duration-300 font-medium"
+            >
               made with ♥ by wlfyzz.net
             </a>
           </div>
