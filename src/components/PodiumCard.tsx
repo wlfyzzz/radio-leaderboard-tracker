@@ -42,52 +42,63 @@ export const PodiumCard = ({ rank, name, wager, prize, avatar, isWinner, coinIco
   return (
     <Card
       className={cn(
-        "relative p-6 border-2 hover-lift animate-bounce-in",
+        "relative p-8 border-2 hover-lift animate-bounce-in overflow-hidden backdrop-blur-sm",
         getRankStyle()
       )}
       style={{ animationDelay: `${rank * 0.1}s` }}
     >
-      <div className="text-center space-y-4">
-        <div className="text-3xl font-bold text-gaming-orange mb-2">
+      {/* Decorative gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-mesh opacity-50 pointer-events-none" />
+      
+      <div className="relative z-10 text-center space-y-5">
+        <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gaming-orange text-gaming-dark text-2xl font-extrabold shadow-glow">
           {getRankBadge()}
         </div>
         
-        <div className="flex justify-center mb-4">
-          <img 
-            src={avatar} 
-            alt={`${name}'s avatar`}
-            className="w-16 h-16 rounded-full border-2 border-gaming-border object-cover"
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.style.display = 'none';
-              target.nextElementSibling?.classList.remove('hidden');
-            }}
-          />
-          <div className="w-16 h-16 rounded-full bg-gaming-orange/20 border-2 border-gaming-border flex items-center justify-center text-gaming-orange font-bold text-2xl hidden">
-            {name.charAt(0).toUpperCase()}
+        <div className="flex justify-center">
+          <div className="relative">
+            <img 
+              src={avatar} 
+              alt={`${name}'s avatar`}
+              className="w-20 h-20 rounded-full border-3 border-gaming-orange/60 object-cover shadow-lg ring-4 ring-gaming-orange/20"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                target.nextElementSibling?.classList.remove('hidden');
+              }}
+            />
+            <div className="w-20 h-20 rounded-full bg-gaming-orange/20 border-3 border-gaming-orange/60 flex items-center justify-center text-gaming-orange font-bold text-3xl shadow-lg ring-4 ring-gaming-orange/20 hidden">
+              {name.charAt(0).toUpperCase()}
+            </div>
+            {/* Rank indicator dot */}
+            <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-gaming-orange border-2 border-gaming-dark shadow-glow" />
           </div>
         </div>
         
-        <div className="space-y-2">
-          <h3 className="font-semibold text-lg truncate">{name}</h3>
-          <div className="text-sm text-muted-foreground">
-            Wagered
-          </div>
-          <div className="text-xl font-bold text-foreground">
-            {parseFloat(wager).toLocaleString(undefined, { 
-              minimumFractionDigits: 2, 
-              maximumFractionDigits: 2 
-            })}
+        <div className="space-y-3 pt-2">
+          <h3 className="font-bold text-xl truncate text-foreground">{name}</h3>
+          <div className="space-y-1">
+            <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+              Wagered
+            </div>
+            <div className="text-2xl font-extrabold text-gaming-orange">
+              ${parseFloat(wager).toLocaleString(undefined, { 
+                minimumFractionDigits: 2, 
+                maximumFractionDigits: 2 
+              })}
+            </div>
           </div>
         </div>
 
-        <Badge 
-          variant="secondary" 
-          className="bg-gaming-orange text-gaming-dark font-bold text-lg px-4 py-2"
-        >
-          <img src={coinIcon} alt="Coin" className="w-5 h-5 mr-2" />
-          {prize}
-        </Badge>
+        <div className="pt-2">
+          <Badge 
+            variant="secondary" 
+            className="bg-gaming-orange text-gaming-dark font-bold text-base px-5 py-2.5 shadow-lg hover-glow"
+          >
+            <img src={coinIcon} alt="Coin" className="w-5 h-5 mr-2" />
+            {prize}
+          </Badge>
+        </div>
       </div>
     </Card>
   );

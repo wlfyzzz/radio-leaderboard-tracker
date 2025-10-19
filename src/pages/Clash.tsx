@@ -24,63 +24,66 @@ const Clash = () => {
 
   return (
     <ErrorBoundary>
-      <div className="min-h-screen bg-background">
-        <div className="container mx-auto px-4 py-8">
-          <div className="text-center mb-12 space-y-6 animate-fade-in">
-            <div className="space-y-4">
+      <div className="min-h-screen bg-background relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 bg-gradient-mesh pointer-events-none opacity-30" />
+        
+        <div className="container mx-auto px-4 py-12 relative z-10">
+          <div className="text-center mb-16 space-y-8 animate-fade-in">
+            <div className="space-y-6">
               {/* Logo Switcher */}
-              <div className="flex justify-center items-center gap-3 md:gap-6 mb-8 flex-wrap">
-                <Link to="/">
+              <div className="flex justify-center items-center gap-4 md:gap-8 mb-12 flex-wrap">
+                <Link to="/" className="group">
                   <img 
                     src={skinraveLogo} 
                     alt="Skinrave" 
-                    className="h-12 md:h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
+                    className="h-14 md:h-20 w-auto cursor-pointer transition-all duration-300 opacity-50 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/30 rounded-xl hover:shadow-lg p-2 bg-gaming-card/40 backdrop-blur-sm hover:bg-gaming-card/60" 
                   />
                 </Link>
-                <div className="relative">
+                <div className="relative group">
                   <img 
                     src={clashLogo} 
                     alt="Clash.gg" 
-                    className="h-12 md:h-16 w-auto cursor-pointer hover-lift transition-all duration-300 border-2 border-gaming-orange rounded-lg shadow-lg" 
+                    className="h-14 md:h-20 w-auto cursor-pointer transition-all duration-300 border-3 border-gaming-orange rounded-xl shadow-glow p-2 bg-gaming-card/80 backdrop-blur-sm" 
                   />
-                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
-                    <div className="w-2 h-2 bg-gaming-orange rounded-full animate-pulse"></div>
+                  <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
+                    <div className="w-2.5 h-2.5 bg-gaming-orange rounded-full animate-pulse shadow-glow"></div>
                   </div>
                 </div>
-                <Link to="/csgold">
+                <Link to="/csgold" className="group">
                   <img 
                     src={csgoldLogo} 
                     alt="CSGold" 
-                    className="h-12 md:h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
+                    className="h-14 md:h-20 w-auto cursor-pointer transition-all duration-300 opacity-50 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/30 rounded-xl hover:shadow-lg p-2 bg-gaming-card/40 backdrop-blur-sm hover:bg-gaming-card/60" 
                   />
                 </Link>
-                <Link to="/csgowin">
+                <Link to="/csgowin" className="group">
                   <img 
                     src={csgowinLogo} 
                     alt="CSGOWin" 
-                    className="h-12 md:h-16 w-auto cursor-pointer hover-lift transition-all duration-300 opacity-60 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/50 rounded-lg" 
+                    className="h-14 md:h-20 w-auto cursor-pointer transition-all duration-300 opacity-50 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/30 rounded-xl hover:shadow-lg p-2 bg-gaming-card/40 backdrop-blur-sm hover:bg-gaming-card/60" 
                   />
                 </Link>
               </div>
 
-              <div className="flex justify-center items-center gap-3 mb-6">
-                <h1 className="text-4xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent animate-bounce-in">
+              <div className="flex justify-center items-center gap-4 mb-8">
+                <h1 className="text-5xl md:text-7xl font-extrabold bg-gradient-primary bg-clip-text text-transparent animate-bounce-in drop-shadow-2xl">
                   Clash.gg Leaderboard
                 </h1>
               </div>
               
-              <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-medium">
                 Track the top performers in our Clash.gg competition
               </p>
 
-              <div className="mb-4 p-4 bg-card border border-border rounded-lg hover-lift">
-                <p className="text-center text-foreground responsive-text">
+              <div className="mb-6 p-6 glass-card rounded-xl hover-lift max-w-2xl mx-auto">
+                <p className="text-center text-foreground text-lg font-medium">
                   Use code{" "}
                   <a 
                     href="https://clash.gg/r/radiobtw" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="font-bold text-gaming-orange bg-gaming-orange/10 px-3 py-2 rounded border-2 border-gaming-orange/30 hover:bg-gaming-orange hover:text-gaming-dark transition-all duration-300 underline decoration-2 underline-offset-2 hover-lift"
+                    className="font-extrabold text-gaming-orange bg-gaming-orange/15 px-4 py-2.5 rounded-lg border-2 border-gaming-orange/40 hover:bg-gaming-orange hover:text-gaming-dark transition-all duration-300 underline decoration-2 underline-offset-4 hover-lift inline-flex items-center gap-2 shadow-lg"
                   >
                     radiobtw
                   </a>{" "}
@@ -89,7 +92,7 @@ const Clash = () => {
               </div>
 
               {data?.ends_at && (
-                <div className="flex justify-center mb-6">
+                <div className="flex justify-center mb-8">
                   <CountdownTimer 
                     endDate={data.ends_at} 
                     title="Clash.gg Competition Ends in"
@@ -97,8 +100,8 @@ const Clash = () => {
                 </div>
               )}
 
-              <div className="flex justify-center mb-6">
-                <Button asChild variant="outline" className="hover-lift">
+              <div className="flex justify-center mb-8">
+                <Button asChild variant="outline" className="hover-lift border-2 border-gaming-orange/30 hover:border-gaming-orange hover:bg-gaming-orange/10 font-semibold text-base px-6 py-3">
                   <Link to="/prev-leaderboard/clash">
                     Previous Leaderboard
                   </Link>
@@ -118,10 +121,13 @@ const Clash = () => {
           )}
 
           {/* Top 3 Podium */}
-          <div className="mb-8">
-            <div className="flex items-center justify-center mb-6">
-              <TrendingUp className="w-6 h-6 mr-2 text-gaming-orange" />
-              <h2 className="text-2xl font-bold">Top Performers</h2>
+          <div className="mb-16">
+            <div className="flex items-center justify-center mb-10 gap-3">
+              <div className="h-1 w-12 bg-gradient-primary rounded-full"></div>
+              <TrendingUp className="w-7 h-7 text-gaming-orange" />
+              <h2 className="text-3xl md:text-4xl font-extrabold bg-gradient-primary bg-clip-text text-transparent">Top Performers</h2>
+              <TrendingUp className="w-7 h-7 text-gaming-orange" />
+              <div className="h-1 w-12 bg-gradient-primary rounded-full"></div>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 responsive-grid max-w-4xl mx-auto">
@@ -180,10 +186,9 @@ const Clash = () => {
 
           {/* Remaining Leaderboard */}
           {(isLoading || (data && data.participants.length > 3)) && (
-            <div className="bg-gradient-card  rounded-lg p-6 animate-slide-up hover-lift max-w-6xl mx-auto">
-              
+            <div className="animate-slide-up max-w-6xl mx-auto">
               {isLoading ? (
-                <div className="space-y-2">
+                <div className="space-y-2 rounded-xl border-2 border-gaming-border/20 bg-gaming-card/60 backdrop-blur-lg shadow-card p-6">
                   {Array.from({ length: 7 }).map((_, index) => (
                     <LeaderboardRowSkeleton key={index} />
                   ))}
@@ -197,11 +202,15 @@ const Clash = () => {
           )}
 
           {/* Footer */}
-          <div className="text-center mt-12 text-muted-foreground">
-<a href="https://wlfyzz.net" target="_blank" rel="noopener noreferrer" className="text-sm emoji-no-shadow">
-  made with ♥ by wlfyzz.net
-</a>
-
+          <div className="text-center mt-20 text-muted-foreground pb-8">
+            <a 
+              href="https://wlfyzz.net" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-base emoji-no-shadow hover:text-gaming-orange transition-colors duration-300 font-medium"
+            >
+              made with ♥ by wlfyzz.net
+            </a>
           </div>
         </div>
       </div>
