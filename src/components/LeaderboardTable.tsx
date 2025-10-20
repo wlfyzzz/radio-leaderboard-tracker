@@ -23,7 +23,7 @@ interface LeaderboardTableProps {
 
 export const LeaderboardTable = ({ data, startFromRank = 4, coinIcon = "https://toastyy.gg/assets/rain.svg" }: LeaderboardTableProps) => {
   return (
-    <div className="rounded-xl border-2 border-gaming-border/20 bg-gaming-card/60 backdrop-blur-lg shadow-card overflow-hidden">
+    <div className="rounded-xl border-2 border-gaming-border/20 bg-gaming-card/60 backdrop-blur-lg shadow-[0_8px_32px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.5)] transition-shadow duration-300 overflow-hidden">
       <Table>
         <TableHeader>
           <TableRow className="border-b-2 border-gaming-border/30 bg-gaming-card/40">
@@ -42,24 +42,24 @@ export const LeaderboardTable = ({ data, startFromRank = 4, coinIcon = "https://
                 className="border-b border-gaming-border/10 hover:bg-gaming-card/70 transition-all duration-200 hover-lift"
               >
                 <TableCell className="font-extrabold text-gaming-orange text-base py-5">
-                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gaming-orange/10 border border-gaming-orange/30">
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gaming-orange/10 border border-gaming-orange/30 hover:bg-gaming-orange/20 transition-colors duration-200">
                     #{rank}
                   </div>
                 </TableCell>
                 <TableCell className="font-medium py-5">
                   <div className="flex items-center space-x-4">
-                    <div className="relative">
+                    <div className="relative group">
                       <img 
                         src={entry.avatar} 
                         alt={`${entry.name}'s avatar`}
-                        className="w-10 h-10 rounded-full border-2 border-gaming-orange/40 object-cover ring-2 ring-gaming-orange/10"
+                        className="w-10 h-10 rounded-full border-2 border-gaming-orange/40 object-cover ring-2 ring-gaming-orange/10 group-hover:border-gaming-orange/60 group-hover:ring-gaming-orange/20 transition-all duration-200"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
                           target.style.display = 'none';
                           target.nextElementSibling?.classList.remove('hidden');
                         }}
                       />
-                      <div className="w-10 h-10 rounded-full bg-gaming-orange/20 border-2 border-gaming-orange/40 flex items-center justify-center text-gaming-orange font-bold text-sm ring-2 ring-gaming-orange/10 hidden">
+                      <div className="w-10 h-10 rounded-full bg-gaming-orange/20 border-2 border-gaming-orange/40 flex items-center justify-center text-gaming-orange font-bold text-sm ring-2 ring-gaming-orange/10 hidden group-hover:border-gaming-orange/60 group-hover:ring-gaming-orange/20 transition-all duration-200">
                         {entry.name.charAt(0).toUpperCase()}
                       </div>
                     </div>

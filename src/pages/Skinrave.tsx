@@ -37,28 +37,28 @@ const Skinrave = () => {
                   <img 
                     src={skinraveLogo} 
                     alt="Skinrave" 
-                    className="h-14 md:h-20 w-auto cursor-pointer transition-all duration-300 border-3 border-gaming-orange rounded-xl shadow-glow p-2 bg-gaming-card/80 backdrop-blur-sm" 
+                    className="h-16 md:h-24 w-auto transition-all duration-300 drop-shadow-[0_0_35px_rgba(147,51,234,0.8)] hover:drop-shadow-[0_0_50px_rgba(147,51,234,1)] hover:scale-105" 
                   />
                 </div>
                 <Link to="/clash" className="group">
                   <img 
                     src={clashLogo} 
                     alt="Clash.gg" 
-                    className="h-14 md:h-20 w-auto cursor-pointer transition-all duration-300 opacity-50 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/30 rounded-xl hover:shadow-lg p-2 bg-gaming-card/40 backdrop-blur-sm hover:bg-gaming-card/60" 
+                    className="h-16 md:h-24 w-auto transition-all duration-300 opacity-40 hover:opacity-100 drop-shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:drop-shadow-[0_0_35px_rgba(249,115,22,0.8)] hover:scale-105" 
                   />
                 </Link>
                 <Link to="/csgold" className="group">
                   <img 
                     src={csgoldLogo} 
                     alt="CSGold" 
-                    className="h-14 md:h-20 w-auto cursor-pointer transition-all duration-300 opacity-50 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/30 rounded-xl hover:shadow-lg p-2 bg-gaming-card/40 backdrop-blur-sm hover:bg-gaming-card/60" 
+                    className="h-16 md:h-24 w-auto transition-all duration-300 opacity-40 hover:opacity-100 drop-shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:drop-shadow-[0_0_35px_rgba(234,179,8,0.8)] hover:scale-105" 
                   />
                 </Link>
                 <Link to="/csgowin" className="group">
                   <img 
                     src={csgowinLogo} 
                     alt="CSGOWin" 
-                    className="h-14 md:h-20 w-auto cursor-pointer transition-all duration-300 opacity-50 hover:opacity-100 border-2 border-transparent hover:border-gaming-orange/30 rounded-xl hover:shadow-lg p-2 bg-gaming-card/40 backdrop-blur-sm hover:bg-gaming-card/60" 
+                    className="h-16 md:h-24 w-auto transition-all duration-300 opacity-40 hover:opacity-100 drop-shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:drop-shadow-[0_0_35px_rgba(249,115,22,0.8)] hover:scale-105" 
                   />
                 </Link>
               </div>

@@ -50,8 +50,8 @@ export const PodiumCard = ({ rank, name, wager, prize, avatar, isWinner, coinIco
       {/* Decorative gradient overlay */}
       <div className="absolute inset-0 bg-gradient-mesh opacity-50 pointer-events-none" />
       
-      <div className="relative z-10 text-center space-y-5">
-        <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-gaming-orange text-gaming-dark text-2xl font-extrabold shadow-glow">
+      <div className="relative z-10 text-center space-y-6">
+        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gaming-orange text-gaming-dark text-2xl font-extrabold shadow-glow hover:scale-110 transition-transform duration-300">
           {getRankBadge()}
         </div>
         
@@ -60,18 +60,16 @@ export const PodiumCard = ({ rank, name, wager, prize, avatar, isWinner, coinIco
             <img 
               src={avatar} 
               alt={`${name}'s avatar`}
-              className="w-20 h-20 rounded-full border-3 border-gaming-orange/60 object-cover shadow-lg ring-4 ring-gaming-orange/20"
+              className="w-24 h-24 rounded-full border-4 border-gaming-orange/70 object-cover shadow-[0_0_30px_rgba(249,115,22,0.5)] ring-4 ring-gaming-orange/20 hover:scale-105 transition-transform duration-300"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.style.display = 'none';
                 target.nextElementSibling?.classList.remove('hidden');
               }}
             />
-            <div className="w-20 h-20 rounded-full bg-gaming-orange/20 border-3 border-gaming-orange/60 flex items-center justify-center text-gaming-orange font-bold text-3xl shadow-lg ring-4 ring-gaming-orange/20 hidden">
+            <div className="w-24 h-24 rounded-full bg-gaming-orange/20 border-4 border-gaming-orange/70 flex items-center justify-center text-gaming-orange font-bold text-3xl shadow-[0_0_30px_rgba(249,115,22,0.5)] ring-4 ring-gaming-orange/20 hidden">
               {name.charAt(0).toUpperCase()}
             </div>
-            {/* Rank indicator dot */}
-            <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-gaming-orange border-2 border-gaming-dark shadow-glow" />
           </div>
         </div>
         
