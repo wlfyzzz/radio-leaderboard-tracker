@@ -35,28 +35,28 @@ const Csgold = () => {
                   <img 
                     src={skinraveLogo} 
                     alt="Skinrave" 
-                    className="h-16 md:h-24 w-auto transition-all duration-300 opacity-40 hover:opacity-100 drop-shadow-[0_0_20px_rgba(147,51,234,0.3)] hover:drop-shadow-[0_0_35px_rgba(147,51,234,0.8)] hover:scale-105" 
+                    className="h-16 md:h-24 w-auto transition-all duration-300 opacity-40 hover:opacity-100 drop-shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:drop-shadow-[0_0_35px_rgba(255,255,255,0.7)] hover:scale-105" 
                   />
                 </Link>
                 <Link to="/clash" className="group">
                   <img 
                     src={clashLogo} 
                     alt="Clash.gg" 
-                    className="h-16 md:h-24 w-auto transition-all duration-300 opacity-40 hover:opacity-100 drop-shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:drop-shadow-[0_0_35px_rgba(249,115,22,0.8)] hover:scale-105" 
+                    className="h-16 md:h-24 w-auto transition-all duration-300 opacity-40 hover:opacity-100 drop-shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:drop-shadow-[0_0_35px_rgba(255,255,255,0.7)] hover:scale-105" 
                   />
                 </Link>
                 <div className="relative group">
                   <img 
                     src={csgoldLogo} 
                     alt="CSGold" 
-                    className="h-16 md:h-24 w-auto transition-all duration-300 drop-shadow-[0_0_35px_rgba(234,179,8,0.8)] hover:drop-shadow-[0_0_50px_rgba(234,179,8,1)] hover:scale-105" 
+                    className="h-16 md:h-24 w-auto transition-all duration-300 drop-shadow-[0_0_35px_rgba(234,179,8,0.8)] hover:drop-shadow-[0_0_50px_rgba(255,255,255,0.9)] hover:scale-105" 
                   />
                 </div>
                 <Link to="/csgowin" className="group">
                   <img 
                     src={csgowinLogo} 
                     alt="CSGOWin" 
-                    className="h-16 md:h-24 w-auto transition-all duration-300 opacity-40 hover:opacity-100 drop-shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:drop-shadow-[0_0_35px_rgba(249,115,22,0.8)] hover:scale-105" 
+                    className="h-16 md:h-24 w-auto transition-all duration-300 opacity-40 hover:opacity-100 drop-shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:drop-shadow-[0_0_35px_rgba(255,255,255,0.7)] hover:scale-105" 
                   />
                 </Link>
               </div>
