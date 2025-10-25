@@ -120,11 +120,6 @@ const Csgobig = () => {
                   <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                     The CSGOBig leaderboard will be available when the competition launches on October 28th, 2025 at 8pm EST
                   </p>
-                  <div className="pt-4">
-                    <p className="text-base text-muted-foreground">
-                      Get ready for competitive wagering and exclusive prizes!
-                    </p>
-                  </div>
                 </div>
               </div>
             </div>

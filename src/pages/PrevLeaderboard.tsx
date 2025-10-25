@@ -11,6 +11,7 @@ import skinraveLogo from "@/assets/skinrave.svg";
 import clashLogo from "@/assets/clash.png";
 import csgoldLogo from "@/assets/csgold.svg";
 import csgowinLogo from "@/assets/csgowin.png";
+import csgobigLogo from "@/assets/csgobig.png";
 import skinraveCoin from "@/assets/skinrave-coin.png";
 import gemCoin from "@/assets/gem.svg";
 import csgoldCoin from "@/assets/csgold-coin.svg";
@@ -50,6 +51,14 @@ const PrevLeaderboard = () => {
           backUrl: "/csgowin",
           siteUrl: "https://csgowin.com/r/radiobtw"
         };
+      case "csgobig":
+        return {
+          logo: csgobigLogo,
+          title: "CSGOBig Previous Leaderboard",
+          coinIcon: skinraveCoin, // Using skinrave coin as placeholder
+          backUrl: "/csgobig",
+          siteUrl: "https://csgobig.com/r/radiobtw"
+        };
       default:
         return {
           logo: skinraveLogo,
@@ -88,10 +97,10 @@ const PrevLeaderboard = () => {
                   <img 
                     src={skinraveLogo} 
                     alt="Skinrave Previous" 
-                    className={`h-14 md:h-20 w-auto cursor-pointer transition-all duration-300 rounded-xl p-2 backdrop-blur-sm ${
+                    className={`h-16 md:h-24 w-auto transition-all duration-300 ${
                       site === "skinrave" || !site 
-                        ? "border-3 border-gaming-orange shadow-glow bg-gaming-card/80" 
-                        : "border-2 border-transparent hover:border-gaming-orange/30 opacity-50 hover:opacity-100 hover:shadow-lg bg-gaming-card/40 hover:bg-gaming-card/60"
+                        ? "drop-shadow-[0_0_35px_rgba(34,197,94,0.8)] hover:drop-shadow-[0_0_50px_rgba(34,197,94,1)] hover:scale-105" 
+                        : "opacity-40 hover:opacity-100 drop-shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:drop-shadow-[0_0_35px_rgba(34,197,94,0.8)] hover:scale-105"
                     }`}
                   />
                 </Link>
@@ -100,10 +109,10 @@ const PrevLeaderboard = () => {
                   <img 
                     src={clashLogo} 
                     alt="Clash.gg Previous" 
-                    className={`h-14 md:h-20 w-auto cursor-pointer transition-all duration-300 rounded-xl p-2 backdrop-blur-sm ${
+                    className={`h-16 md:h-24 w-auto transition-all duration-300 ${
                       site === "clash" 
-                        ? "border-3 border-gaming-orange shadow-glow bg-gaming-card/80" 
-                        : "border-2 border-transparent hover:border-gaming-orange/30 opacity-50 hover:opacity-100 hover:shadow-lg bg-gaming-card/40 hover:bg-gaming-card/60"
+                        ? "drop-shadow-[0_0_35px_rgba(249,115,22,0.8)] hover:drop-shadow-[0_0_50px_rgba(249,115,22,1)] hover:scale-105" 
+                        : "opacity-40 hover:opacity-100 drop-shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:drop-shadow-[0_0_35px_rgba(249,115,22,0.8)] hover:scale-105"
                     }`}
                   />
                 </Link>
@@ -112,10 +121,10 @@ const PrevLeaderboard = () => {
                   <img 
                     src={csgoldLogo} 
                     alt="CSGold Previous" 
-                    className={`h-14 md:h-20 w-auto cursor-pointer transition-all duration-300 rounded-xl p-2 backdrop-blur-sm ${
+                    className={`h-16 md:h-24 w-auto transition-all duration-300 ${
                       site === "csgold" 
-                        ? "border-3 border-gaming-orange shadow-glow bg-gaming-card/80" 
-                        : "border-2 border-transparent hover:border-gaming-orange/30 opacity-50 hover:opacity-100 hover:shadow-lg bg-gaming-card/40 hover:bg-gaming-card/60"
+                        ? "drop-shadow-[0_0_35px_rgba(234,179,8,0.8)] hover:drop-shadow-[0_0_50px_rgba(234,179,8,1)] hover:scale-105" 
+                        : "opacity-40 hover:opacity-100 drop-shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:drop-shadow-[0_0_35px_rgba(234,179,8,0.8)] hover:scale-105"
                     }`}
                   />
                 </Link>
@@ -124,10 +133,22 @@ const PrevLeaderboard = () => {
                   <img 
                     src={csgowinLogo} 
                     alt="CSGOWin Previous" 
-                    className={`h-14 md:h-20 w-auto cursor-pointer transition-all duration-300 rounded-xl p-2 backdrop-blur-sm ${
+                    className={`h-16 md:h-24 w-auto transition-all duration-300 ${
                       site === "csgowin" 
-                        ? "border-3 border-gaming-orange shadow-glow bg-gaming-card/80" 
-                        : "border-2 border-transparent hover:border-gaming-orange/30 opacity-50 hover:opacity-100 hover:shadow-lg bg-gaming-card/40 hover:bg-gaming-card/60"
+                        ? "drop-shadow-[0_0_35px_rgba(249,115,22,0.7)] hover:drop-shadow-[0_0_50px_rgba(234,179,8,1)] hover:scale-105" 
+                        : "opacity-40 hover:opacity-100 drop-shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:drop-shadow-[0_0_35px_rgba(234,179,8,0.8)] hover:scale-105"
+                    }`}
+                  />
+                </Link>
+
+                <Link to="/prev-leaderboard/csgobig" className="group">
+                  <img 
+                    src={csgobigLogo} 
+                    alt="CSGOBig Previous" 
+                    className={`h-16 md:h-24 w-auto transition-all duration-300 ${
+                      site === "csgobig" 
+                        ? "drop-shadow-[0_0_35px_rgba(255,193,7,0.8)] hover:drop-shadow-[0_0_50px_rgba(255,152,0,1)] hover:scale-105" 
+                        : "opacity-40 hover:opacity-100 drop-shadow-[0_0_20px_rgba(255,193,7,0.3)] hover:drop-shadow-[0_0_35px_rgba(255,152,0,0.8)] hover:scale-105"
                     }`}
                   />
                 </Link>
