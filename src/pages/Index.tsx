@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useLeaderboard } from "@/hooks/useLeaderboard";
 import { CountdownTimer } from "@/components/CountdownTimer";
+import FairPlayNotice from "@/components/FairPlayNotice";
 import { RefreshCw, TrendingUp, Users, Clock, Radio, Zap, Sword } from "lucide-react";
 import { Link } from "react-router-dom";
 import rainLogo from "@/assets/rain.png";
@@ -210,6 +211,7 @@ const Index = () => {
 
           </div>
         </div>
+        <FairPlayNotice />
       </div>
     </ErrorBoundary>
   );
