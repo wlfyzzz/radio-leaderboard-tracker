@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useClashLeaderboard } from "@/hooks/useClashLeaderboard";
 import { CountdownTimer } from "@/components/CountdownTimer";
 import FairPlayNotice from "@/components/FairPlayNotice";
+import KickStreamWindow from "@/components/KickStreamWindow";
 import { RefreshCw, TrendingUp, Users, Clock, Radio, Zap, Sword } from "lucide-react";
 import { Link } from "react-router-dom";
 import clashLogo from "@/assets/clash.png";
@@ -220,6 +221,7 @@ const Clash = () => {
           </div>
         </div>
         <FairPlayNotice />
+        <KickStreamWindow />
       </div>
     </ErrorBoundary>
   );

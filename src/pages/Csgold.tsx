@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useCsgoldLeaderboard } from "@/hooks/useCsgoldLeaderboard";
 import { CountdownTimer } from "@/components/CountdownTimer";
 import FairPlayNotice from "@/components/FairPlayNotice";
+import KickStreamWindow from "@/components/KickStreamWindow";
 import { RefreshCw, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import csgoldLogo from "@/assets/csgold.svg";
@@ -218,6 +219,7 @@ const Csgold = () => {
           </div>
         </div>
         <FairPlayNotice />
+        <KickStreamWindow />
       </div>
     </ErrorBoundary>
   );
