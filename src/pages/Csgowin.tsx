@@ -5,6 +5,7 @@ import { NetworkErrorDisplay, ErrorBoundary } from "@/components/ErrorBoundary";
 import { Button } from "@/components/ui/button";
 import { useCsgowinLeaderboard } from "@/hooks/useCsgowinLeaderboard";
 import { CountdownTimer } from "@/components/CountdownTimer";
+import FairPlayNotice from "@/components/FairPlayNotice";
 import { TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import skinraveLogo from "@/assets/skinrave.svg";
@@ -224,6 +225,7 @@ const Csgowin = () => {
             </a>
           </div>
         </div>
+        <FairPlayNotice />
       </div>
     </ErrorBoundary>
   );
