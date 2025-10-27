@@ -13,7 +13,6 @@ import rainLogo from "@/assets/rain.png";
 import skinraveLogo from "@/assets/skinrave.svg";
 import csgoldLogo from "@/assets/csgold.svg";
 import csgowinLogo from "@/assets/csgowin.png";
-import csgobigLogo from "@/assets/csgobig.png";
 import gemCoin from "@/assets/gem.svg";
 
 const Clash = () => {
@@ -62,21 +61,12 @@ const Clash = () => {
                     className="h-16 md:h-24 w-auto transition-all duration-300 opacity-40 hover:opacity-100 drop-shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:drop-shadow-[0_0_35px_rgba(234,179,8,0.8)] hover:scale-105" 
                   />
                 </Link>
-                <Link to="/csgobig" className="group">
-                  <img 
-                    src={csgobigLogo} 
-                    alt="CSGOBig" 
-                    className="h-16 md:h-24 w-auto transition-all duration-300 opacity-40 hover:opacity-100 drop-shadow-[0_0_20px_rgba(255,193,7,0.3)] hover:drop-shadow-[0_0_35px_rgba(255,152,0,0.8)] hover:scale-105" 
-                  />
-                </Link>
               </div>
-
               <div className="flex justify-center items-center gap-4 mb-8">
-                <h1 className="text-5xl md:text-7xl font-extrabold bg-gradient-primary bg-clip-text text-transparent animate-bounce-in drop-shadow-2xl whitespace-nowrap">
-                  Clash.gg Leaderboard
+                <h1 className="text-5xl md:text-7xl font-extrabold bg-gradient-primary bg-clip-text text-transparent animate-bounce-in drop-shadow-2xl">
+                  Clash Leaderboard
                 </h1>
               </div>
-              
               <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-medium">
                 Track the top performers in our Clash.gg competition
               </p>
