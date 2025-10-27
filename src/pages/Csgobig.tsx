@@ -2,6 +2,7 @@ import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { Button } from "@/components/ui/button";
 import { CountdownTimer } from "@/components/CountdownTimer";
 import FairPlayNotice from "@/components/FairPlayNotice";
+import KickStreamWindow from "@/components/KickStreamWindow";
 import { TrendingUp, Lock } from "lucide-react";
 import { Link } from "react-router-dom";
 import skinraveLogo from "@/assets/skinrave.svg";
@@ -139,6 +140,7 @@ const Csgobig = () => {
           </div>
         </div>
         <FairPlayNotice />
+        <KickStreamWindow />
       </div>
     </ErrorBoundary>
   );
