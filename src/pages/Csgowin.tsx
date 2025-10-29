@@ -5,15 +5,12 @@ import { NetworkErrorDisplay, ErrorBoundary } from "@/components/ErrorBoundary";
 import { Button } from "@/components/ui/button";
 import { useCsgowinLeaderboard } from "@/hooks/useCsgowinLeaderboard";
 import { CountdownTimer } from "@/components/CountdownTimer";
-import FairPlayNotice from "@/components/FairPlayNotice";
-import KickStreamWindow from "@/components/KickStreamWindow";
 import { TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import skinraveLogo from "@/assets/skinrave.svg";
 import clashLogo from "@/assets/clash.png";
 import csgoldLogo from "@/assets/csgold.svg";
 import csgowinLogo from "@/assets/csgowin.png";
-import csgobigLogo from "@/assets/csgobig.png";
 import csgowinCoin from "@/assets/csgowin-coin.png";
 
 const Csgowin = () => {
@@ -62,13 +59,6 @@ const Csgowin = () => {
                     className="h-16 md:h-24 w-auto transition-all duration-300 drop-shadow-[0_0_35px_rgba(249,115,22,0.7)] hover:drop-shadow-[0_0_50px_rgba(234,179,8,1)] hover:scale-105" 
                   />
                 </div>
-                <Link to="/csgobig" className="group">
-                  <img 
-                    src={csgobigLogo} 
-                    alt="CSGOBig" 
-                    className="h-16 md:h-24 w-auto transition-all duration-300 opacity-40 hover:opacity-100 drop-shadow-[0_0_20px_rgba(255,193,7,0.3)] hover:drop-shadow-[0_0_35px_rgba(255,152,0,0.8)] hover:scale-105" 
-                  />
-                </Link>
               </div>
 
               <div className="flex justify-center items-center gap-4 mb-8">
@@ -226,8 +216,6 @@ const Csgowin = () => {
             </a>
           </div>
         </div>
-        <FairPlayNotice />
-        <KickStreamWindow />
       </div>
     </ErrorBoundary>
   );

@@ -15,7 +15,7 @@ import rainLogo from "@/assets/rain.png";
 import clashLogo from "@/assets/clash.png";
 import csgoldLogo from "@/assets/csgold.svg";
 import csgowinLogo from "@/assets/csgowin.png";
-import csgobigLogo from "@/assets/csgobig.png";
+
 import skinraveCoin from "@/assets/skinrave-coin.png";
 
 const Skinrave = () => {
@@ -62,13 +62,6 @@ const Skinrave = () => {
                     src={csgowinLogo} 
                     alt="CSGOWin" 
                     className="h-16 md:h-24 w-auto transition-all duration-300 opacity-40 hover:opacity-100 drop-shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:drop-shadow-[0_0_35px_rgba(234,179,8,0.8)] hover:scale-105" 
-                  />
-                </Link>
-                <Link to="/csgobig" className="group">
-                  <img 
-                    src={csgobigLogo} 
-                    alt="CSGOBig" 
-                    className="h-16 md:h-24 w-auto transition-all duration-300 opacity-40 hover:opacity-100 drop-shadow-[0_0_20px_rgba(255,193,7,0.3)] hover:drop-shadow-[0_0_35px_rgba(255,152,0,0.8)] hover:scale-105" 
                   />
                 </Link>
               </div>

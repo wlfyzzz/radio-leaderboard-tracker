@@ -5,8 +5,6 @@ import { NetworkErrorDisplay, ErrorBoundary } from "@/components/ErrorBoundary";
 import { Button } from "@/components/ui/button";
 import { useCsgoldLeaderboard } from "@/hooks/useCsgoldLeaderboard";
 import { CountdownTimer } from "@/components/CountdownTimer";
-import FairPlayNotice from "@/components/FairPlayNotice";
-import KickStreamWindow from "@/components/KickStreamWindow";
 import { RefreshCw, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import csgoldLogo from "@/assets/csgold.svg";
@@ -14,7 +12,6 @@ import csgoldCoin from "@/assets/csgold-coin.svg";
 import skinraveLogo from "@/assets/skinrave.svg";
 import clashLogo from "@/assets/clash.png";
 import csgowinLogo from "@/assets/csgowin.png";
-import csgobigLogo from "@/assets/csgobig.png";
 
 const Csgold = () => {
   const { data, isLoading, error, refetch, isRefetching } = useCsgoldLeaderboard();
@@ -60,13 +57,6 @@ const Csgold = () => {
                     src={csgowinLogo} 
                     alt="CSGOWin" 
                     className="h-16 md:h-24 w-auto transition-all duration-300 opacity-40 hover:opacity-100 drop-shadow-[0_0_20px_rgba(249,115,22,0.3)] hover:drop-shadow-[0_0_35px_rgba(234,179,8,0.8)] hover:scale-105" 
-                  />
-                </Link>
-                <Link to="/csgobig" className="group">
-                  <img 
-                    src={csgobigLogo} 
-                    alt="CSGOBig" 
-                    className="h-16 md:h-24 w-auto transition-all duration-300 opacity-40 hover:opacity-100 drop-shadow-[0_0_20px_rgba(255,193,7,0.3)] hover:drop-shadow-[0_0_35px_rgba(255,152,0,0.8)] hover:scale-105" 
                   />
                 </Link>
               </div>
@@ -218,8 +208,6 @@ const Csgold = () => {
             </a>
           </div>
         </div>
-        <FairPlayNotice />
-        <KickStreamWindow />
       </div>
     </ErrorBoundary>
   );

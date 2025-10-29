@@ -1,86 +1,49 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Minimize2, Maximize2, GripVertical, X } from "lucide-react";
+import React, { useState } from "react";
+import ReactDOM from "react-dom";
+import { Minimize2, Maximize2, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const KickStreamWindow: React.FC = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
-  const [position, setPosition] = useState({ x: 20, y: 20 });
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
-  const windowRef = useRef<HTMLDivElement>(null);
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    if (windowRef.current && e.target === e.currentTarget) {
-      setIsDragging(true);
-      const rect = windowRef.current.getBoundingClientRect();
-      setDragOffset({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-      });
-    }
-  };
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (isDragging) {
-        const newX = e.clientX - dragOffset.x;
-        const newY = e.clientY - dragOffset.y;
-        
-        // Keep within viewport bounds
-        const maxX = window.innerWidth - (isCollapsed ? 250 : 400);
-        const maxY = window.innerHeight - (isCollapsed ? 50 : 300);
-        
-        setPosition({
-          x: Math.max(0, Math.min(newX, maxX)),
-          y: Math.max(0, Math.min(newY, maxY)),
-        });
-      }
-    };
-
-    const handleMouseUp = () => {
-      setIsDragging(false);
-    };
-
-    if (isDragging) {
-      document.addEventListener("mousemove", handleMouseMove);
-      document.addEventListener("mouseup", handleMouseUp);
-    }
-
-    return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseup", handleMouseUp);
-    };
-  }, [isDragging, dragOffset, isCollapsed]);
 
   if (isClosed) return null;
 
-  return (
+  const content = (
     <div
-      ref={windowRef}
-      className="hidden lg:block fixed z-50 bg-card border-2 border-gaming-border rounded-lg shadow-2xl overflow-hidden transition-all duration-300"
       style={{
-        left: `${position.x}px`,
-        top: `${position.y}px`,
+        position: "fixed",
+        bottom: "20px",
+        right: "20px",
+        zIndex: 999999999,
+        backgroundColor: "#111",
+        color: "#fff",
+        border: "1px solid #333",
+        borderRadius: "8px",
         width: isCollapsed ? "250px" : "400px",
-        height: isCollapsed ? "auto" : "280px",
-        cursor: isDragging ? "grabbing" : "default",
+        height: isCollapsed ? "50px" : "280px",
+        overflow: "hidden",
+        boxShadow: "0 0 20px rgba(0,0,0,0.6)",
+        transition: "all 0.3s ease",
       }}
     >
       {/* Header */}
       <div
-        className="flex items-center justify-between bg-gaming-card border-b border-gaming-border p-2 cursor-grab active:cursor-grabbing"
-        onMouseDown={handleMouseDown}
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          background: "#222",
+          borderBottom: "1px solid #333",
+          padding: "6px 10px",
+        }}
       >
-        <div className="flex items-center gap-2">
-          <GripVertical className="w-4 h-4 text-muted-foreground" />
-          <span className="text-sm font-semibold text-foreground">Live Stream</span>
-        </div>
-        <div className="flex items-center gap-1">
+        <span style={{ fontSize: "14px", fontWeight: 600 }}>Live Stream</span>
+        <div style={{ display: "flex", gap: "4px" }}>
           <Button
             variant="ghost"
             size="icon"
-            className="h-6 w-6"
+            style={{ height: "24px", width: "24px" }}
             onClick={() => setIsCollapsed(!isCollapsed)}
           >
             {isCollapsed ? (
@@ -92,7 +55,7 @@ const KickStreamWindow: React.FC = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="h-6 w-6"
+            style={{ height: "24px", width: "24px" }}
             onClick={() => setIsClosed(true)}
           >
             <X className="w-3 h-3" />
@@ -100,19 +63,24 @@ const KickStreamWindow: React.FC = () => {
         </div>
       </div>
 
-      {/* Content */}
+      {/* Stream */}
       {!isCollapsed && (
-        <div className="w-full h-full">
-          <iframe
-            src="https://player.kick.com/radiobtw"
-            className="w-full h-full"
-            allowFullScreen
-            title="Kick Stream"
-          />
-        </div>
+        <iframe
+          src="https://player.kick.com/radiobtw"
+          title="Kick Stream"
+          allowFullScreen
+          style={{
+            width: "100%",
+            height: "100%",
+            border: "none",
+            display: "block",
+          }}
+        />
       )}
     </div>
   );
+
+  return ReactDOM.createPortal(content, document.body);
 };
 
 export default KickStreamWindow;
